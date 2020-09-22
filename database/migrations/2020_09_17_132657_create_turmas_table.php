@@ -20,7 +20,8 @@ class CreateTurmasTable extends Migration
             $table->string('ano');
             $table->string('turno');
             $table->integer('vagas');
-            $table->string('professor')
+            $table->bigInteger('professor_id');
+            $table->foreign('professor_id')
                 ->references('id')
                 ->on('professores')
                 ->onDelete('cascade');

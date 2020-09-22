@@ -20,6 +20,6 @@ class Professor extends Model
     
     public function turma()
     {
-        return $this->belongsTo('App\Turma');
+        return $this->hasMany('App\Turma');
     }
 }

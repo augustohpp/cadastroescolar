@@ -18,6 +18,6 @@ class Turma extends Model
     ];
 
     public function professor() {
-        return $this->hasOne('App\Professor', 'id');
+        return $this->belongsTo('App\Professor', 'id');
     }
 }

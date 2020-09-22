@@ -16,7 +16,8 @@ class TurmaController extends Controller
      */
     public function index()
     {
-        return view('viewsTurmas.tabela');
+        $test = Turma::all();
+        return view('viewsTurmas.tabela', compact('test'));
     }
 
     /**
@@ -44,8 +45,14 @@ class TurmaController extends Controller
         $class->ano = $request->input('ano');
         $class->turno = $request->input('turno');
         $class->vagas = $request->input('vagas');
-        $class->professor()->professor = $request->input('professor');
-        $class->save();
+       
+        //$class->professor = $request->input('professor');
+        //$class->save();
+
+        $professor = Professor::find($request->input('professor'));
+        $class->professor()->associate($professor)->save();
+                
+        return redirect()->route('listaTurma');
     }
 
     /**

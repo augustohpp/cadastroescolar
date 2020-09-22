@@ -52,6 +52,7 @@ Route::post('/professores/{id}', 'ProfessorController@update');
 
 /* Routes Turmas */
 Route::get('/turmas/cadastro', 'TurmaController@create')->name('cadastroTurma');
+Route::post('/turmas', 'TurmaController@store');
 
 Route::get('/turmas', 'TurmaController@index')->name('listaTurma');
 

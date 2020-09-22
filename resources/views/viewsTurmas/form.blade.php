@@ -2,7 +2,7 @@
 
 @extends('cadastro')
 @section('form')
-<form action="/professores" method="POST" class="form-horizontal" id="formProduto">
+<form action="/turmas" method="POST" class="form-horizontal" id="formProduto">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -82,14 +82,14 @@
                 </div>
 
                 {{--- Formulario Professor ---}}
-
+            <? dd($prof);?>
                 <div class="form-group col-md-6">
                     <label for="tel2" class="control-label">Professor:</label>
                     <div class="input-group">
                         <select name="professor" id="professor" class="form-control">
                             <option value="" selected disabled>Selecione um Professor</option>
                             @foreach ($professor as $prof)
-                                <option value="{{ $prof->nome }}">{{ $prof->nome }}</option>
+                                <option value="{{ $prof->id }}">{{ $prof->nome }}</option>
                             @endforeach
                         </select>
                     </div>
