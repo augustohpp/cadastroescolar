@@ -14,10 +14,10 @@ class Turma extends Model
         'ano',
         'turno',
         'vagas',
-        'professor'
+        'professor_id'
     ];
 
     public function professor() {
-        return $this->belongsTo('App\Professor', 'id');
+        return $this->belongsTo('App\Professor');
     }
 }
