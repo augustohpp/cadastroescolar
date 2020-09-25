@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aluno;
+use App\Alunoturma;
 use App\Endereco;
+use App\Turma;
 use Illuminate\Routing\Route;
 
 class AlunoController extends Controller
@@ -27,7 +29,8 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        return view('viewsAlunos.form');
+        $turmas = Turma::all();
+        return view('viewsAlunos.form', compact('turmas'));
     }
 
     /**
@@ -38,15 +41,16 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        $cat = new Aluno();
-        $cat->nome = $request->input('nome');
-        $cat->sobrenome = $request->input('sobrenome');
-        $cat->sexo = $request->input('sexo');
-        $cat->data_Nascimento = $request->input('data_Nascimento');
-        $cat->tel = $request->input('tel');
-        $cat->tel2 = $request->input('tel2');
-        $cat->email = $request->input('email');
-        $cat->save();
+        $aluno = new Aluno();
+        $aluno->nome = $request->input('nome');
+        $aluno->sobrenome = $request->input('sobrenome');
+        $aluno->sexo = $request->input('sexo');
+        $aluno->data_Nascimento = $request->input('data_Nascimento');
+        $aluno->tel = $request->input('tel');
+        $aluno->tel2 = $request->input('tel2');
+        $aluno->email = $request->input('email');
+        
+        $aluno->save();
 
         $cat2 = new Endereco();
         $cat2->cep = $request->input('cep');
@@ -55,7 +59,15 @@ class AlunoController extends Controller
         $cat2->rua = $request->input('rua');
         $cat2->numero = $request->input('numero');
         $cat2->complemento = $request->input('complemento');
-        $cat->endereco()->save($cat2);
+        $aluno->endereco()->save($cat2);
+
+        $idAluno = $aluno->id;
+        $class = new Alunoturma();
+        $class->turma_id = $request->input('turma_id');
+        $class->aluno_id = $idAluno; 
+        $aluno->turma()->save($class);
+       
+        
 
         return redirect()->route('listaAluno');
     }

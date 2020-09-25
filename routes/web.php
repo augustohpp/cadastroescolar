@@ -14,7 +14,7 @@
 use Illuminate\Database\Eloquent\Collection;
 use App\Aluno;
 use App\Professor;
-use App\Http\Controllers\AlunoController;
+
 
 Route::get('/', function() {
     return view('welcome');
@@ -29,7 +29,6 @@ Route::get('/alunos/info/{id}', 'AlunoController@show');
 Route::get('/alunos/delete/{id}', 'AlunoController@destroy');
 Route::get('/alunos/editar/{id}', 'AlunoController@edit');
 Route::post('/alunos/{id}', 'AlunoController@update');
-
 Route::get('/pdf',function() {
     $collection = Aluno::all();
     $cadastros = json_decode(json_encode($collection));
@@ -41,20 +40,21 @@ Route::get('/pdf',function() {
 
 Route::get('/professores/cadastro', 'ProfessorController@create')->name('cadastroProf');
 Route::post('/professores', 'ProfessorController@store');
-
 Route::get('/professores', 'ProfessorController@index')->name('listaProfessor');
 Route::get('/professores/info/{id}', 'ProfessorController@show');
-
 Route::get('/professores/delete/{id}', 'ProfessorController@destroy');
-
 Route::get('/professores/editar/{id}', 'ProfessorController@edit');
 Route::post('/professores/{id}', 'ProfessorController@update');
 
 /* Routes Turmas */
+
 Route::get('/turmas/cadastro', 'TurmaController@create')->name('cadastroTurma');
 Route::post('/turmas', 'TurmaController@store');
-
 Route::get('/turmas', 'TurmaController@index')->name('listaTurma');
+Route::get('/turmas/info/{id}', 'TurmaController@show');
+Route::get('/turmas/delete/{id}', 'TurmaController@destroy');
+Route::get('/turmas/editar/{id}', 'TurmaController@edit');
+Route::post('/turmas/{id}', 'TurmaController@update');
 
 
 

@@ -10,7 +10,7 @@
         </div>
         <h6 class="col-12 modal-title text-center">Campos com * são obrigatorios</h6>
         <div class="container col-11">
-            <input type="hidden" id="id" class="form-control">
+            {{-- <input name="" value="{{$alunos->id}}" type="hidden" id="id" class="form-control"> --}}
 
                 {{--- Formulario Nome ---}}
             <div class="form-row">
@@ -18,7 +18,7 @@
                     <label for="nome" class="control-label">Nome: *</label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
-                            value="{{isset($cras->nome) ? $cras->nome : old('nome') }}" required>
+                        value="{{isset($cras->nome) ? $cras->nome : old('nome') }}" required>
                     </div>
                 </div>
 
@@ -31,15 +31,17 @@
                             value="{{isset($cras->sobrenome) ? $cras->sobrenome : old('sobrenome') }}" required>
                     </div>
                 </div>
-{{--- LIBERAR DPS
+
                 <div class="form-group col-md-1">
                     <label for="Turma" class="control-label">Turma: *</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="Turma" name="turma" placeholder="Turma"
-                            value="{{isset($cras->Turma) ? $cras->sobrenome : old('Turma') }}" required>
+                        <select class="form-control" name="turma_id" id="turma_id">
+                            @foreach ($turmas as $turma)
+                                <option value="{{$turma->id}}">{{$turma->turma}}
+                            @endforeach
+                        </select>
                     </div>
                 </div>
- --}}
 
                 {{--- Formulário Sexo ---}}
 

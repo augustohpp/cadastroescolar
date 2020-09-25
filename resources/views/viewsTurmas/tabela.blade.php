@@ -17,7 +17,11 @@
             <tr>
                 <td>{{$class->id}}</td>
                 <td>{{$class->turma}}</td>
-                <td>{{$class->professor->nome}}</td>
+                @if ($class->professor != null)
+                    <td>{{$class->professor->nome}}</td>
+                @else
+                    <td>Sem Professor</td>
+                @endif
                 <td>
                     <a href="/turmas/info/{{$class->id}}">Info</a>
                     <a href="/turmas/editar/{{$class->id}}">Editar</a>

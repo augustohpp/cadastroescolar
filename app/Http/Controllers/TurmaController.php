@@ -45,9 +45,6 @@ class TurmaController extends Controller
         $class->ano = $request->input('ano');
         $class->turno = $request->input('turno');
         $class->vagas = $request->input('vagas');
-       
-        //$class->professor = $request->input('professor');
-        //$class->save();
 
         $professor = Professor::find($request->input('professor_id'));
         $class->professor()->associate($professor)->save();
@@ -63,7 +60,8 @@ class TurmaController extends Controller
      */
     public function show($id)
     {
-        //
+        $turma = Turma::find($id);
+        return view('viewsTurmas.infoTurmas', compact('turma'));
     }
 
     /**
@@ -74,7 +72,9 @@ class TurmaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $professor = Professor::all();
+        $class = Turma::find($id);
+        return view('viewsTurmas.editTurmas', compact('class'), compact('professor'));
     }
 
     /**
@@ -86,7 +86,18 @@ class TurmaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $class = Turma::find($id);
+        $class->update([
+            'turma'=>$request->turma,
+            'nivel'=>$request->nivel,
+            'ano'=>$request->ano,
+            'turno'=>$request->turno,
+            'vagas'=>$request->vagas,
+            'professor'=>$request->professor,
+        ]);
+        $professor = Professor::find($request->input('professor_id'));
+        $class->professor()->associate($professor)->save();
+        return redirect()->route('listaTurma');
     }
 
     /**
@@ -97,6 +108,9 @@ class TurmaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $del = Turma::find($id);
+        $del->delete();
+
+        return redirect()->route('listaTurma');
     }
 }

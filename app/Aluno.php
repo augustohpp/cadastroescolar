@@ -22,4 +22,9 @@ class Aluno extends Model
     {
         return $this->hasOne('App\Endereco', 'end_id');
     }
+
+    public function turma()
+    {
+        return $this->belongsToMany('App\Turma', 'alunoturmas');
+    }
 }
