@@ -12,4 +12,5 @@ class Alunoturma extends Model
         'aluno_id',
         'turma_id'
     ];
+    
 }

@@ -50,8 +50,8 @@
                     <div class="input-group">
                         <select name="sexo" id="sexo" class="form-control" required>
                             <option value="" selected disabled>Selecione uma opção</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
                         </select>
                     </div>
                 </div>

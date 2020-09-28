@@ -43,11 +43,12 @@
         </thead>
         <tbody>
             @foreach ($cadastros as $cadastro)
+           
             <tr>
                 <td>{{$cadastro->id}}</td>
                 <td>{{$cadastro->nome}}</td>
                 <td>{{$cadastro->sobrenome}}</td>
-                <td>{{$cadastro->turma}}</td>
+                {{-- <td>{{$cadastro->turma}}</td> --}}
             </tr>
             @endforeach
         </tbody>

@@ -51,23 +51,23 @@ class AlunoController extends Controller
         $aluno->email = $request->input('email');
         
         $aluno->save();
-
-        $cat2 = new Endereco();
-        $cat2->cep = $request->input('cep');
-        $cat2->cidade = $request->input('cidade');
-        $cat2->bairro = $request->input('bairro');
-        $cat2->rua = $request->input('rua');
-        $cat2->numero = $request->input('numero');
-        $cat2->complemento = $request->input('complemento');
-        $aluno->endereco()->save($cat2);
-
         $idAluno = $aluno->id;
-        $class = new Alunoturma();
-        $class->turma_id = $request->input('turma_id');
-        $class->aluno_id = $idAluno; 
-        $aluno->turma()->save($class);
-       
         
+        $endereco = new Endereco();
+        $endereco->cep = $request->input('cep');
+        $endereco->cidade = $request->input('cidade');
+        $endereco->bairro = $request->input('bairro');
+        $endereco->rua = $request->input('rua');
+        $endereco->numero = $request->input('numero');
+        $endereco->complemento = $request->input('complemento');
+        $endereco->aluno_id = $idAluno;
+        $endereco->save();
+        
+        
+        $alunoTurma = new Alunoturma();
+        $alunoTurma->turma_id = $request->input('turma_id');
+        $alunoTurma->aluno_id = $idAluno; 
+        $alunoTurma->save();
 
         return redirect()->route('listaAluno');
     }
@@ -81,8 +81,9 @@ class AlunoController extends Controller
     public function show($id)
     {
         $alunos = Aluno::find($id);
+        $turma = Alunoturma::where('aluno_id',$id);
         
-        return view('viewsAlunos.infoAlunos', compact('alunos'));
+        return view('viewsAlunos.infoAlunos', compact('alunos', 'turma'));
     }
 
     /**
@@ -93,9 +94,10 @@ class AlunoController extends Controller
      */
     public function edit($id)
     {
+        $turmas = Turma::all();
         $alunos = Aluno::find($id);
         if (isset($id)) {
-            return view('viewsAlunos.editAlunos', compact('alunos'));
+            return view('viewsAlunos.editAlunos', compact('alunos','turmas'));
         }
         return redirect(route('listaAluno'));
     }
@@ -110,30 +112,57 @@ class AlunoController extends Controller
     public function update(Request $request, $id)
     {
         
-        $alunos = Aluno::find($id);
+        // $alunos = Aluno::find($id);
         
-        $end = $alunos->endereco()
-            ->update([
-                'cep'=>$request->cep,
-                'cidade'=>$request->cidade,
-                'bairro'=>$request->bairro,
-                'rua'=>$request->rua,
-                'numero'=>$request->numero,
-                'complemento'=>$request->complemento,
-            ])
-        ;
+        // $end = $alunos->endereco()
+        //     ->update([
+        //         'cep'=>$request->cep,
+        //         'cidade'=>$request->cidade,
+        //         'bairro'=>$request->bairro,
+        //         'rua'=>$request->rua,
+        //         'numero'=>$request->numero,
+        //         'complemento'=>$request->complemento,
+        //     ])
+        // ;
 
-        $alunoDetail = Aluno::Where('id',$id)
-            ->update([
-                'nome'=>$request->nome,
-                'sobrenome'=>$request->sobrenome,
-                'sexo'=>$request->sexo,
-                'data_Nascimento'=>$request->data_Nascimento,
-                'tel'=>$request->tel,
-                'tel2'=>$request->tel2,
-                'email'=>$request->email,
-            ])
-        ;
+        // $alunoDetail = Aluno::Where('id',$id)
+        //     ->update([
+        //         'nome'=>$request->nome,
+        //         'sobrenome'=>$request->sobrenome,
+        //         'sexo'=>$request->sexo,
+        //         'data_Nascimento'=>$request->data_Nascimento,
+        //         'tel'=>$request->tel,
+        //         'tel2'=>$request->tel2,
+        //         'email'=>$request->email,
+        //     ])
+        //;
+
+        $aluno = Aluno::find($id);
+        $aluno->update([
+            'nome'=>$request->nome,
+            'sobrenome'=>$request->sobrenome,
+            'sexo'=>$request->sexo,
+            'data_Nascimento'=>$request->data_Nascimento,
+            'tel'=>$request->tel,
+            'tel2'=>$request->tel2,
+            'email'=>$request->email,
+        ]);
+
+        $endereco = Endereco::where('aluno_id', $id);
+        $endereco->update([
+            'cep'=>$request->cep,
+            'cidade'=>$request->cidade,
+            'bairro'=>$request->bairro,
+            'rua'=>$request->rua,
+            'numero'=>$request->numero,
+            'complemento'=>$request->complemento,
+        ]);
+
+        $turma = Alunoturma::where('aluno_id', $id);
+        $turma->update([
+            'turma_id'=>$request->turma_id,
+        ]);
+
         return redirect(route('listaAluno'));
     }
 
@@ -146,7 +175,7 @@ class AlunoController extends Controller
     public function destroy($id)
     {
         $del = Aluno::find($id);
-        $del2 = Endereco::where('end_id', $id);
+        $del2 = Endereco::where('aluno_id', $id);
         if (isset($id)) {
             $del2->delete();
             $del->delete();

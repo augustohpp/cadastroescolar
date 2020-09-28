@@ -80,6 +80,7 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
+            'Proengsoft\\JsValidation\\' => 24,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
         ),
@@ -287,6 +288,10 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
+        'Proengsoft\\JsValidation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -416,7 +421,6 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
     public static $classMap = array (
         'App\\Aluno' => __DIR__ . '/../..' . '/app/Aluno.php',
         'App\\Alunoturma' => __DIR__ . '/../..' . '/app/Alunoturma.php',
-        'App\\Alunoturmas' => __DIR__ . '/../..' . '/app/Alunoturmas.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Endereco' => __DIR__ . '/../..' . '/app/Endereco.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -3020,6 +3024,23 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
         'PhpParser\\Parser\\Tokens' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+        'Proengsoft\\JsValidation\\Exceptions\\PropertyNotFoundException' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Exceptions/PropertyNotFoundException.php',
+        'Proengsoft\\JsValidation\\Facades\\JsValidatorFacade' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Facades/JsValidatorFacade.php',
+        'Proengsoft\\JsValidation\\Javascript\\JavascriptRulesTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/JavascriptRulesTrait.php',
+        'Proengsoft\\JsValidation\\Javascript\\JavascriptValidator' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/JavascriptValidator.php',
+        'Proengsoft\\JsValidation\\Javascript\\MessageParser' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/MessageParser.php',
+        'Proengsoft\\JsValidation\\Javascript\\RuleParser' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/RuleParser.php',
+        'Proengsoft\\JsValidation\\Javascript\\ValidatorHandler' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/ValidatorHandler.php',
+        'Proengsoft\\JsValidation\\JsValidationServiceProvider' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/JsValidationServiceProvider.php',
+        'Proengsoft\\JsValidation\\JsValidatorFactory' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/JsValidatorFactory.php',
+        'Proengsoft\\JsValidation\\RemoteValidationMiddleware' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/RemoteValidationMiddleware.php',
+        'Proengsoft\\JsValidation\\Remote\\Resolver' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Remote/Resolver.php',
+        'Proengsoft\\JsValidation\\Remote\\Validator' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Remote/Validator.php',
+        'Proengsoft\\JsValidation\\Support\\AccessProtectedTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/AccessProtectedTrait.php',
+        'Proengsoft\\JsValidation\\Support\\DelegatedValidator' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/DelegatedValidator.php',
+        'Proengsoft\\JsValidation\\Support\\RuleListTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/RuleListTrait.php',
+        'Proengsoft\\JsValidation\\Support\\UseDelegatedValidatorTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/UseDelegatedValidatorTrait.php',
+        'Proengsoft\\JsValidation\\Support\\ValidationRuleParserProxy' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/ValidationRuleParserProxy.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',

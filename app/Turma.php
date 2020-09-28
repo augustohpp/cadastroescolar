@@ -25,4 +25,5 @@ class Turma extends Model
     {
         return $this->belongsToMany('App\Aluno', 'alunoturmas');
     }
+    
 }

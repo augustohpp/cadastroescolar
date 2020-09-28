@@ -15,10 +15,16 @@ class CreateAlunoturmasTable extends Migration
     {
         Schema::create('alunoturmas', function (Blueprint $table) {
             $table->bigInteger('aluno_id')->unsigned();
-            $table->foreign('aluno_id')->references('id')->on('alunos');
+            $table->foreign('aluno_id')
+            ->references('id')->on('alunos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             $table->bigInteger('turma_id')->unsigned();
-            $table->foreign('turma_id')->references('id')->on('turmas');
+            $table->foreign('turma_id')
+            ->references('id')->on('turmas')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
 
             
             $table->timestamps();

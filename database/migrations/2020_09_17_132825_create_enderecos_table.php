@@ -14,10 +14,11 @@ class CreateEnderecosTable extends Migration
     public function up()
     {
         Schema::create('enderecos', function (Blueprint $table) {
-            $table->bigInteger('end_id')->unsigned();
-            $table->foreign('end_id')
+            $table->bigInteger('aluno_id')->unsigned();
+            $table->foreign('aluno_id')
                 ->references('id')->on('alunos')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->string('cep')->nullable();
             $table->string('cidade')->nullable();
             $table->string('bairro')->nullable();

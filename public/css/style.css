@@ -178,3 +178,12 @@ body {
 .container .info span .fa {
   color: #e74c3c;
 }
+
+.infoTurmas{
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  border-collapse:collapse;
+  margin-left: 5px;
+  padding: 5px 0;
+  text-align: center;
+}

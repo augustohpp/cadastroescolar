@@ -13,6 +13,7 @@
 
 use Illuminate\Database\Eloquent\Collection;
 use App\Aluno;
+use App\Alunoturma;
 use App\Professor;
 
 
@@ -29,8 +30,9 @@ Route::get('/alunos/info/{id}', 'AlunoController@show');
 Route::get('/alunos/delete/{id}', 'AlunoController@destroy');
 Route::get('/alunos/editar/{id}', 'AlunoController@edit');
 Route::post('/alunos/{id}', 'AlunoController@update');
+//Route::post('/pdf', 'AlunoTurmaController@get');
 Route::get('/pdf',function() {
-    $collection = Aluno::all();
+    $collection = Aluno::all(); 
     $cadastros = json_decode(json_encode($collection));
     $pdf = \PDF::loadView('pdf', compact('cadastros'));
     return $pdf->stream('exemplo.pdf');

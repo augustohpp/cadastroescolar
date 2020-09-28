@@ -20,11 +20,12 @@ class Aluno extends Model
 
     public function endereco()
     {
-        return $this->hasOne('App\Endereco', 'end_id');
+        return $this->hasOne('App\Endereco');
     }
 
     public function turma()
     {
         return $this->belongsToMany('App\Turma', 'alunoturmas');
     }
+
 }
