@@ -19,7 +19,7 @@ use App\Professor;
 
 Route::get('/', function() {
     return view('welcome');
-});
+})->middleware('auth');
 
 /* Routes Alunos */
 
@@ -64,5 +64,11 @@ Route::post('/turmas/{id}', 'TurmaController@update');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* Login Admin */
+Route::get('/admin', 'AdminController@index')->name('homeadmin');
+
+Route::get('/admin/login', 'Auth\AdminLoginController@index')->name('admin.login');
+Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 
 

@@ -46,6 +46,7 @@
 
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                         autocomplete="new-password" placeholder="Confirmar senha">
+                    
 
                     <button type="submit">
                         {{ __('Registrar') }}
