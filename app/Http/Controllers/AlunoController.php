@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 use App\Aluno;
 use App\Alunoturma;
 use App\Endereco;
+use App\Http\Requests\CreateAlunoRequest;
 use App\Turma;
+// use Dotenv\Validator;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Validator;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade;
+use Proengsoft\JsValidation\JsValidatorFactory;
 
 class AlunoController extends Controller
 {
@@ -39,7 +44,7 @@ class AlunoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAlunoRequest $request)
     {
         $aluno = new Aluno();
         $aluno->nome = $request->input('nome');
@@ -109,34 +114,8 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateAlunoRequest $request, $id)
     {
-        
-        // $alunos = Aluno::find($id);
-        
-        // $end = $alunos->endereco()
-        //     ->update([
-        //         'cep'=>$request->cep,
-        //         'cidade'=>$request->cidade,
-        //         'bairro'=>$request->bairro,
-        //         'rua'=>$request->rua,
-        //         'numero'=>$request->numero,
-        //         'complemento'=>$request->complemento,
-        //     ])
-        // ;
-
-        // $alunoDetail = Aluno::Where('id',$id)
-        //     ->update([
-        //         'nome'=>$request->nome,
-        //         'sobrenome'=>$request->sobrenome,
-        //         'sexo'=>$request->sexo,
-        //         'data_Nascimento'=>$request->data_Nascimento,
-        //         'tel'=>$request->tel,
-        //         'tel2'=>$request->tel2,
-        //         'email'=>$request->email,
-        //     ])
-        //;
-
         $aluno = Aluno::find($id);
         $aluno->update([
             'nome'=>$request->nome,

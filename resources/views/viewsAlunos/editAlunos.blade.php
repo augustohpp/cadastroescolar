@@ -2,7 +2,7 @@
 
 @extends('cadastro')
 @section('form')
-<form action="/alunos/{{ $alunos->id }}" method="POST" class="form-horizontal" id="formProduto">
+<form action="/alunos/{{ $alunos->id }}" method="POST" class="form-horizontal" id="formAluno">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -167,4 +167,12 @@
         </div>
     </div><!-- Card -->
 </form>
+@endsection
+
+@section('javascript')
+
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\CreateAlunoRequest','#formAluno' ) !!}
+
 @endsection

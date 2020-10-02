@@ -20,6 +20,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{url('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url('css/styles.css')}}">
+    <link rel="stylesheet" href="{{url('css/style.css')}}">
+    <link rel="stylesheet" href="{{url('css/__codepen_io_andytran_pen.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/atlantis.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/fonts.min.css')}}">
 </head>
 
 <body>
@@ -68,5 +75,4 @@
         </script>
     </footer>
 </body>
-
 </html>

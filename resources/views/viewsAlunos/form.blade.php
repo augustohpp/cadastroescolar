@@ -2,7 +2,7 @@
 
 @extends('cadastro')
 @section('form')
-<form action="/alunos" method="POST" class="form-horizontal" id="formProduto">
+<form action="/alunos" method="POST" class="form-horizontal" id="formAluno">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -32,10 +32,13 @@
                     </div>
                 </div>
 
+                {{-- Formulário Seleção Turma --}}
+
                 <div class="form-group col-md-1">
-                    <label for="Turma" class="control-label">Turma: *</label>
+                    <label for="Turma" class="control-label">Turma:</label>
                     <div class="input-group">
                         <select class="form-control" name="turma_id" id="turma_id">
+                            <option value="" disabled selected>*</option>
                             @foreach ($turmas as $turma)
                                 <option value="{{$turma->id}}">{{$turma->turma}}
                             @endforeach
@@ -167,4 +170,12 @@
         </div>
     </div><!-- Card -->
 </form>
+@endsection
+
+@section('javascript')
+
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\AlunoRequest','#formAluno' ) !!}
+
 @endsection

@@ -14,8 +14,6 @@ use Proengsoft\JsValidation\Support\ValidationRuleParserProxy;
 
 class JsValidatorFactory
 {
-    const ASTERISK = '__asterisk__';
-
     /**
      * The application instance.
      *
@@ -93,8 +91,7 @@ class JsValidatorFactory
     /**
      * Gets fake data when validator has wildcard rules.
      *
-     * @param  array  $rules
-     * @param  array  $customAttributes
+     * @param array $rules
      * @return array
      */
     protected function getValidationData(array $rules, array $customAttributes = [])
@@ -105,9 +102,6 @@ class JsValidatorFactory
 
         $attributes = array_merge(array_keys($customAttributes), $attributes);
         $data = array_reduce($attributes, function ($data, $attribute) {
-            // Prevent wildcard rule being removed as an implicit attribute (not present in the data).
-            $attribute = str_replace('*', self::ASTERISK, $attribute);
-
             Arr::set($data, $attribute, true);
 
             return $data;
@@ -120,7 +114,7 @@ class JsValidatorFactory
      * Creates JsValidator instance based on FormRequest.
      *
      * @param $formRequest
-     * @param null|string $selector
+     * @param null $selector
      * @return \Proengsoft\JsValidation\Javascript\JavascriptValidator
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
@@ -131,16 +125,16 @@ class JsValidatorFactory
             $formRequest = $this->createFormRequest($formRequest);
         }
 
-        $rules = method_exists($formRequest, 'rules') ? $this->app->call([$formRequest, 'rules']) : [];
+        $rules = method_exists($formRequest, 'rules') ? $formRequest->rules() : [];
 
         $validator = $this->getValidatorInstance($rules, $formRequest->messages(), $formRequest->attributes());
 
         $jsValidator = $this->validator($validator, $selector);
-
+        
         if (method_exists($formRequest, 'withJsValidator')) {
             $formRequest->withJsValidator($jsValidator);
         }
-
+        
         return $jsValidator;
     }
 
@@ -173,7 +167,7 @@ class JsValidatorFactory
          * @var $formRequest \Illuminate\Foundation\Http\FormRequest
          * @var $request Request
          */
-        [$class, $params] = $this->parseFormRequestName($class);
+        list($class, $params) = $this->parseFormRequestName($class);
 
         $request = $this->app->__get('request');
         $formRequest = $this->app->build($class, $params);
@@ -213,7 +207,6 @@ class JsValidatorFactory
         $remote = ! $this->options['disable_remote_validation'];
         $view = $this->options['view'];
         $selector = is_null($selector) ? $this->options['form_selector'] : $selector;
-        $ignore = $this->options['ignore'];
 
         $delegated = new DelegatedValidator($validator, new ValidationRuleParserProxy($validator->getData()));
         $rules = new RuleParser($delegated, $this->getSessionToken());
@@ -221,7 +214,7 @@ class JsValidatorFactory
 
         $jsValidator = new ValidatorHandler($rules, $messages);
 
-        $manager = new JavascriptValidator($jsValidator, compact('view', 'selector', 'remote', 'ignore'));
+        $manager = new JavascriptValidator($jsValidator, compact('view', 'selector', 'remote'));
 
         return $manager;
     }

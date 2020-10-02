@@ -2,11 +2,11 @@
 
 @extends('cadastro')
 @section('form')
-<form action="/turmas/{{$class->id}}" method="POST" class="form-horizontal" id="formProduto">
+<form action="/turmas/{{$class->id}}" method="POST" class="form-horizontal" id="formTurma">
     @csrf
     <div class="card">
         <div class="card-header">
-            <h4 class="col-12 modal-title text-center">Novo Cadastro de Turma</h5>
+            <h4 class="col-12 modal-title text-center">Editar turma {{ $class->turma }}</h5>
         </div>
         <h6 class="col-12 modal-title text-center">Campos com * são obrigatorios</h6>
         <div class="container col-8" align="center">
@@ -104,6 +104,10 @@
 @endsection
 
 @section('javascript')
+
+    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\TurmaRequest', '#formTurma') !!}
+
     <script type="text/javascript">
         var ano = $('select[name="ano"] option');
         $('select[name="nivel"]').on('change', function() {

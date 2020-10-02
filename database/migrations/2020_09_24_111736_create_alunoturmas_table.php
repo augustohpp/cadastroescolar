@@ -20,7 +20,9 @@ class CreateAlunoturmasTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
 
-            $table->bigInteger('turma_id')->unsigned();
+            $table->bigInteger('turma_id')
+            ->unsigned()
+            ->nullable();
             $table->foreign('turma_id')
             ->references('id')->on('turmas')
             ->onDelete('cascade')

@@ -1,9 +1,9 @@
 @extends('layouts.app')
-
+@if (Gate::denies('create-users'))
 @section('content')
 <div class="container">
     <div class="card">
-        <div class="card-header">{{ __('Criar Conta') }}</div>
+        <div class="card-header">{{ __('Criar Usuário') }}</div>
         <div class="form">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -47,6 +47,16 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                         autocomplete="new-password" placeholder="Confirmar senha">
                     
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <select name="categoria" id="categoria" class="form-control" required>
+                                <option value="" disabled selected>Categoria</option>
+                                <option value="1">Técnico de TI</option>
+                                <option value="2">Gestor do Sistema</option>
+                                <option value="3">Operador</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <button type="submit">
                         {{ __('Registrar') }}
@@ -59,94 +69,15 @@
         </div>
     </div>
 </div>
-
-
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header">{{ __('Criar Conta') }}</div>
-
-<div class="card-body">
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <div class="form-group row">
-
-            <div class="col-md-8">
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                    value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
-
-                @error('name')
-                <span class="invalid-feedback" role="alert">
-                    {{ $message }}
-                </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="form-group row">
-
-            <div class="col-md-8">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                    value="{{ old('email') }}" autocomplete="email" placeholder="Email">
-
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    {{ $message }}
-                </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-md-8">
-                <input type="string" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror"
-                    placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
-
-                @error('cpf')
-                <span class="invalid-feedback" role="alert">
-                    {{ $message }}
-                </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="form-group row">
-
-            <div class="col-md-8">
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" autocomplete="new-password" placeholder="Senha">
-
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    {{ $message }}
-                </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="form-group row">
-
-            <div class="col-md-8">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                    autocomplete="new-password" placeholder="Confirmar senha">
-            </div>
-        </div>
-
-        <div class="form-group row mb-0">
-            <div class="col-md-8">
-                <button type="submit" class="btn-hover btn btn-primary">
-                    {{ __('Registrar') }}
-                </button>
-
-                <p class="register text-center">Já possui conta? <a href="/login">Entrar</a></p>
-            </div>
-        </div>
-    </form>
-</div>
-</div>
-</div>
-</div>
-</div> --}}
 @endsection
+
+@else
+@section('content')
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Oh não!</h4>
+        <p>Parece que você não tem permissão para acessar esta página.</p>
+        <hr>
+        <p class="mb-0">Clique neste <a href=" {{ url()->previous() }}">link</a> e volte para a página anterior.</p>
+    </div>
+@endsection
+@endif

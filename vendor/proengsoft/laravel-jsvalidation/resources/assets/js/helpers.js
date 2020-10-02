@@ -9,11 +9,6 @@
  * Released under the MIT license
  */
 
-import strlen from 'locutus/php/strings/strlen';
-import array_diff from 'locutus/php/array/array_diff';
-import strtotime from 'locutus/php/datetime/strtotime';
-import is_numeric from 'locutus/php/var/is_numeric';
-
 $.extend(true, laravelValidation, {
 
     helpers: {
@@ -55,7 +50,7 @@ $.extend(true, laravelValidation, {
          */
         selector: function (names) {
             var selector = [];
-            if (! this.isArray(names))  {
+            if (!$.isArray(names))  {
                 names = [names];
             }
             for (var i = 0; i < names.length; i++) {
@@ -138,7 +133,7 @@ $.extend(true, laravelValidation, {
 
             if (this.hasNumericRules(element) && this.is_numeric(value)) {
                 return parseFloat(value);
-            } else if (this.isArray(value)) {
+            } else if ($.isArray(value)) {
                 return parseFloat(value.length);
             } else if (element.type === 'file') {
                 return parseFloat(Math.floor(this.fileinfo(element).size));
@@ -183,8 +178,8 @@ $.extend(true, laravelValidation, {
             var timeValue = false;
             var fmt = new DateFormatter();
 
-            if (typeof format === 'object') {
-                var dateRule = this.getLaravelValidation('DateFormat', format);
+            if ($.type(format) === 'object') {
+                var dateRule=this.getLaravelValidation('DateFormat', format);
                 if (dateRule !== undefined) {
                     format = dateRule[1][0];
                 } else {
@@ -291,17 +286,6 @@ $.extend(true, laravelValidation, {
         },
 
         /**
-         * Check whether the argument is of type Array.
-         * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray#Polyfill
-         *
-         * @param arg
-         * @returns {boolean}
-         */
-        isArray: function(arg) {
-            return Object.prototype.toString.call(arg) === '[object Array]';
-        },
-
-        /**
          * Returns Array diff based on PHP function array_diff.
          * http://php.net/manual/es/function.array_diff.php
          * http://phpjs.org/functions/array_diff/
@@ -322,7 +306,7 @@ $.extend(true, laravelValidation, {
          * @returns {*}
          */
         arrayEquals: function (arr1, arr2) {
-            if (! this.isArray(arr1) || ! this.isArray(arr2)) {
+            if (! $.isArray(arr1) || ! $.isArray(arr2)) {
                 return false;
             }
             
@@ -376,7 +360,7 @@ $.extend(true, laravelValidation, {
             var newResponse = ['Whoops, looks like something went wrong.'];
             if ('responseText' in response) {
                 var errorMsg = response.responseText.match(/<h1\s*>(.*)<\/h1\s*>/i);
-                if (this.isArray(errorMsg)) {
+                if ($.isArray(errorMsg)) {
                     newResponse = [errorMsg[1]];
                 }
             }
@@ -415,34 +399,6 @@ $.extend(true, laravelValidation, {
             });
 
             return new RegExp('^'+regexpParts.join('[^\\]]*')+'$');
-        },
-
-        /**
-         * Merge additional laravel validation rules into the current rule set.
-         *
-         * @param {object} rules
-         * @param {object} newRules
-         * @returns {object}
-         */
-        mergeRules: function (rules, newRules) {
-            var rulesList = {
-                'laravelValidation': newRules.laravelValidation || [],
-                'laravelValidationRemote': newRules.laravelValidationRemote || []
-            };
-
-            for (var key in rulesList) {
-                if (rulesList[key].length === 0) {
-                    continue;
-                }
-
-                if (typeof rules[key] === "undefined") {
-                    rules[key] = [];
-                }
-
-                rules[key] = rules[key].concat(rulesList[key]);
-            }
-
-            return rules;
         }
     }
 });

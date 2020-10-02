@@ -19,7 +19,7 @@ use App\Professor;
 
 Route::get('/', function() {
     return view('welcome');
-})->middleware('auth');
+});//->middleware('auth');
 
 /* Routes Alunos */
 
@@ -58,17 +58,15 @@ Route::get('/turmas/delete/{id}', 'TurmaController@destroy');
 Route::get('/turmas/editar/{id}', 'TurmaController@edit');
 Route::post('/turmas/{id}', 'TurmaController@update');
 
-
-
 /* Route para Login */
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* Login Admin */
-Route::get('/admin', 'AdminController@index')->name('homeadmin');
+// /* Login Admin */
+// Route::get('/admin', 'AdminController@index')->name('homeadmin');
 
-Route::get('/admin/login', 'Auth\AdminLoginController@index')->name('admin.login');
-Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+// Route::get('/admin/login', 'Auth\AdminLoginController@index')->name('admin.login');
+// Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 
 

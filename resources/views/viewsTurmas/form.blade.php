@@ -2,7 +2,7 @@
 
 @extends('cadastro')
 @section('form')
-<form action="/turmas" method="POST" class="form-horizontal" id="formProduto">
+<form action="/turmas" method="POST" class="form-horizontal" id="formTurma">
     @csrf
     <div class="card">
         <div class="card-header">
@@ -104,6 +104,10 @@
 @endsection
 
 @section('javascript')
+
+    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\TurmaRequest', '#formTurma') !!}
+
     <script type="text/javascript">
         var ano = $('select[name="ano"] option');
         $('select[name="nivel"]').on('change', function() {

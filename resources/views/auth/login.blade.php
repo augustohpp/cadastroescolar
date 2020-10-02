@@ -26,11 +26,11 @@
                     </span>
                     @enderror
 
-                    <div class="remember-password">
+                    <div class="remember-password ml-4">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
                             {{ old('remember') ? 'checked' : '' }}>
 
-                        <label class="form-check-label" for="remember">
+                        <label class="form-check-label pt-2" for="remember">
                             {{ __('Lembrar senha') }}
                         </label>
                     </div>
