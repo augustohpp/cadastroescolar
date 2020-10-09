@@ -5,65 +5,69 @@
     <div class="card">
         <div class="card-header">{{ __('Criar Usuário') }}</div>
         <div class="form">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" id="formRegister">
                 @csrf
                 <div class="input">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                        value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="name" type="text" class="form-control" name="name"
+                                value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
+                        </div>
+                    </div>
 
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
-
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-
-                    <input type="string" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror"
-                        placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
-
-                    @error('cpf')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                        name="password" required autocomplete="current-password" placeholder="Senha">
-
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                        autocomplete="new-password" placeholder="Confirmar senha">
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="email" type="email" class="form-control"
+                                name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
+                        </div>
+                    </div>
                     
                     <div class="form-group col-6">
                         <div class="input-group">
+                            <input type="string" name="cpf" id="cpf" class="form-control"
+                                placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="password" type="password" class="form-control"
+                                name="password" required autocomplete="current-password" placeholder="Senha">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                                autocomplete="new-password" placeholder="Confirmar senha">
+                        </div>
+                    </div>
+
+                    @if(Gate::allows('define-categ'))
+                    <div class="form-group col-6">
+                        <div class="input-group">
                             <select name="categoria" id="categoria" class="form-control" required>
-                                <option value="" disabled selected>Categoria</option>
+                                <option value="3" disabled selected>Categoria</option>
                                 <option value="1">Técnico de TI</option>
                                 <option value="2">Gestor do Sistema</option>
                                 <option value="3">Operador</option>
                             </select>
                         </div>
                     </div>
+                    @else
+                    <div class="input-group">
+                            <select name="categoria" id="categoria" class="form-control" hidden required>
+                                <option value="3">Operador</option>
+                            </select>
+                        </div>
+                    @endif
 
                     <button type="submit">
                         {{ __('Registrar') }}
                     </button>
                 </div>
                 <div class="details">
-                    <p class="register text-center">Já possui conta? <a href="/login">Entrar</a></p>
+                    <p class="register text-center"><a href="{{ route('listaUser') }}">Cancelar</a></p>
                 </div>
             </form>
         </div>
@@ -81,3 +85,11 @@
     </div>
 @endsection
 @endif
+
+@section('javascript2')
+
+<!-- Laravel Javascript Validation -->
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\UserRequest','#formRegister' ) !!}
+
+@endsection

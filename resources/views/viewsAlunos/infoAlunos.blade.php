@@ -15,9 +15,7 @@
 
             <div class="col-6 border">
                 <h4 class="border-bottom  font-weight-bold">Turma do Aluno</h4> 
-                @foreach ($alunos->turma as $turma)
-                {{$turma->turma}}
-                @endforeach
+                <p>{{$alunos->turma->turma}}</p>
             </div>
 
             <div class="col-6 border">

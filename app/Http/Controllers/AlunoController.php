@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Aluno;
 use App\Alunoturma;
 use App\Endereco;
-use App\Http\Requests\CreateAlunoRequest;
 use App\Turma;
 // use Dotenv\Validator;
 use Illuminate\Routing\Route;
@@ -16,6 +15,11 @@ use Proengsoft\JsValidation\JsValidatorFactory;
 
 class AlunoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +48,7 @@ class AlunoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAlunoRequest $request)
+    public function store(Request $request)
     {
         $aluno = new Aluno();
         $aluno->nome = $request->input('nome');
@@ -54,6 +58,7 @@ class AlunoController extends Controller
         $aluno->tel = $request->input('tel');
         $aluno->tel2 = $request->input('tel2');
         $aluno->email = $request->input('email');
+        $aluno->turma_id = $request->input('turma_id');
         
         $aluno->save();
         $idAluno = $aluno->id;
@@ -69,12 +74,36 @@ class AlunoController extends Controller
         $endereco->save();
         
         
-        $alunoTurma = new Alunoturma();
-        $alunoTurma->turma_id = $request->input('turma_id');
-        $alunoTurma->aluno_id = $idAluno; 
-        $alunoTurma->save();
+        // $alunoTurma = new Alunoturma();
+        // $alunoTurma->turma_id = $request->input('turma_id');
+        // $alunoTurma->aluno_id = $idAluno;
+        // $alunoTurma->save();
 
+        
+        // $turma = Turma::where('id', $alunoTurma->turma_id)->get();
+        // // dd($turma);
+        
+        // // $aa = $turma->aluno;
+        // // $bb = $aa->count();
+        // // echo $bb;
+
+
+        // foreach ($turma as $key => $value) {
+        //     // echo $value['turma'];
+        //     // echo '<hr>';
+        //     // echo $value['vagas'];
+        //     // echo '<hr>';
+        //     if ($value['vagas' > 4]) {
+        //         return 'Funciona';
+        //     }else {
+        //         return $value['turma'];
+        //     }
+        // }
+        
         return redirect()->route('listaAluno');
+
+        
+
     }
 
     /**
@@ -114,7 +143,7 @@ class AlunoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CreateAlunoRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $aluno = Aluno::find($id);
         $aluno->update([
@@ -125,6 +154,7 @@ class AlunoController extends Controller
             'tel'=>$request->tel,
             'tel2'=>$request->tel2,
             'email'=>$request->email,
+            'turma_id'=>$request->turma_id,
         ]);
 
         $endereco = Endereco::where('aluno_id', $id);
@@ -137,10 +167,10 @@ class AlunoController extends Controller
             'complemento'=>$request->complemento,
         ]);
 
-        $turma = Alunoturma::where('aluno_id', $id);
-        $turma->update([
-            'turma_id'=>$request->turma_id,
-        ]);
+        // $turma = Alunoturma::where('aluno_id', $id);
+        // $turma->update([
+        //     'turma_id'=>$request->turma_id,
+        // ]);
 
         return redirect(route('listaAluno'));
     }
@@ -160,5 +190,12 @@ class AlunoController extends Controller
             $del->delete();
         }
         return redirect(route('listaAluno'));
+    }
+
+    public function pdf()
+    {
+        $collection = Aluno::get();
+        $pdf = \PDF::loadView('pdf', compact('collection'));
+        return $pdf->stream('exemplo.pdf');
     }
 }

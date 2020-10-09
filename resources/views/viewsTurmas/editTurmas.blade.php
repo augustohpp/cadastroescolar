@@ -89,7 +89,7 @@
                         <select name="professor_id" id="professor_id" class="form-control">
                             <option value="" selected disabled>Selecione um Professor</option>
                             @foreach ($professor as $prof)
-                                <option value="{{ $prof->id }}">{{ $prof->nome }}</option>
+                                <option value="{{ $prof->id }}" {{ $class->professor_id == $prof->id ? 'selected' : '' }}>{{ $prof->nome }}</option>
                             @endforeach
                         </select>
                     </div>

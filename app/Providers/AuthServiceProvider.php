@@ -29,5 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('create-users', function($users){
             return $users->categoria == 3;
         });
+
+        Gate::define('define-categ', function($users){
+            return $users->categoria == 1;
+        });
     }
 }

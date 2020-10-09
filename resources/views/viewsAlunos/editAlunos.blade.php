@@ -32,16 +32,19 @@
                     </div>
                 </div>
 
+                {{--- Formulário Turma ---}}
+
                 <div class="form-group col-md-1">
                     <label for="Turma" class="control-label">Turma: *</label>
                     <div class="input-group">
                         <select class="form-control" name="turma_id" id="turma_id">
                             @foreach ($turmas as $turma)
-                                <option value="{{$turma->id}}">{{$turma->turma}}
+                                <option value="{{$turma->id}}" {{ $alunos->turma_id == $turma->id ? 'selected' : '' }}>{{$turma->turma}}
                             @endforeach
                         </select>
                     </div>
                 </div>
+                
             
 
                 {{--- Formulário Sexo ---}}
@@ -173,6 +176,6 @@
 
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-{!! JsValidator::formRequest('App\Http\Requests\CreateAlunoRequest','#formAluno' ) !!}
+{!! JsValidator::formRequest('App\Http\Requests\AlunoRequest','#formAluno' ) !!}
 
 @endsection

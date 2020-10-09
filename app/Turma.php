@@ -21,9 +21,14 @@ class Turma extends Model
         return $this->belongsTo('App\Professor');
     }
 
+    // public function aluno()
+    // {
+    //     return $this->belongsToMany('App\Aluno', 'alunoturmas');
+    // }
+
     public function aluno()
     {
-        return $this->belongsToMany('App\Aluno', 'alunoturmas');
+        return $this->hasMany('App\Aluno');
     }
     
 }

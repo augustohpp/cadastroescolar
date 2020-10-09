@@ -22,6 +22,13 @@ class CreateAlunosTable extends Migration
             $table->string('tel')->nullable();
             $table->string('tel2')->nullable();
             $table->string('email')->unique();
+            $table->bigInteger('turma_id')
+                ->unsigned()
+                ->nullable();
+            $table->foreign('turma_id')
+                ->references('id')->on('turmas')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -27,7 +27,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item {{ (request()->is('listaAluno')) || (request()->is('cadastroAluno'))  ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->routeIs('listaAluno')) || (request()->routeIs('cadastroAluno'))  ? 'active' : '' }}">
                     <a data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne" href="#base">
                         <i class="far fa-address-card"></i>
                         <p>Alunos</p>
@@ -55,7 +55,7 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item {{ (request()->routeIs('listaTurma')) || (request()->routeIs('cadastroTurma'))  ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#sidebarLayouts">
                         <i class="fas fa-graduation-cap"></i>
                         <p>Turmas</p>
@@ -63,12 +63,12 @@
                     </a>
                     <div class="expandable collapse" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
-                            <li class="">
+                            <li class="{{ (request()->routeIs('cadastroTurma')) ? 'active' : '' }}">
                                 <a href="{{ route('cadastroTurma') }}">
                                     <span class="sub-item ">Cadastro</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="{{ (request()->routeIs('listaTurma')) ? 'active' : '' }}">
                                 <a href="{{ route('listaTurma') }}">
                                     <span class="sub-item">Lista</span>
                                 </a>
@@ -82,20 +82,20 @@
                     </div>
                 </li>
 
-                <li class="nav-item {{ (request()->is('listaProf')) || (request()->is('cadastroProf'))  ? 'active' : '' }}">
+                <li class="nav-item {{ (request()->routeIs('listaProfessor')) || (request()->routeIs('cadastroProf'))  ? 'active' : '' }}">
                     <a data-toggle="collapse" href="#sidebarLayouts2">
                        <i class="fas fa-users"></i>
                         <p>Professores</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="expandable collapse {{ (request()->routeIs('cadastroProf')) || (request()->routeIs('listaProf')) || (request()->routeIs('pdf')) ? 'show' : '' }}" id="sidebarLayouts2">
+                    <div class="expandable collapse {{ (request()->routeIs('cadastroProf')) || (request()->routeIs('listaProfessor')) || (request()->routeIs('pdf')) ? 'show' : '' }}" id="sidebarLayouts2">
                         <ul class="nav nav-collapse">
-                            <li class="">
+                            <li class="{{ (request()->routeIs('cadastroProf')) ? 'active' : '' }}">
                                 <a href="{{ route('cadastroProf') }}">
                                     <span class="sub-item">Cadastro</span>
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="{{ (request()->routeIs('listaProfessor')) ? 'active' : '' }}">
                                 <a href="{{ route('listaProfessor') }}">
                                     <span class="sub-item">Lista</span>
                                 </a>
@@ -108,6 +108,37 @@
                         </ul>
                     </div>
                 </li>
+
+                @if(Gate::denies('create-users'))
+                <li class="nav-item {{ (request()->RouteIs('listaUser')) ? 'active' : '' }}">
+                    <a data-toggle="collapse" aria-expanded="false" aria-controls="collapseOne" href="#base3">
+                        <i class="fas fa-users-cog"></i>
+                        <p>Usuários</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="expandable collapse {{ (request()->routeIs('listaUser')) || (request()->routeIs('pdf')) ? 'show' : '' }}"
+                        aria-controls="collapseOne" id="base3">
+                        <ul class="nav nav-collapse ">
+                            <li class="">
+                                <a href="/register">
+                                    <span class="sub-item">Cadastro</span>
+                                </a>
+                            </li>
+                                <li class="{{ (request()->routeIs('listaUser')) ? 'active' : '' }}">
+                                <a href="{{ route('listaUser') }}">
+                                    <span class="sub-item">Lista</span>
+                                </a>
+                            </li>
+                            <li class="{{ (request()->routeIs('pdf')) ? 'active' : '' }}">
+                                <a href="route('pdf')">
+                                    <span class="sub-item">PDF</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endif
+
                 <li class="nav-item">
                     <a data-toggle="collapse" href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">

@@ -55,6 +55,11 @@
                 @endforeach
             </tbody>
         </table>
+
+        @php
+            $pao = $turma->aluno->count();
+            echo $pao;
+        @endphp
     </div>
 
 <script>

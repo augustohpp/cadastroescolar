@@ -27,7 +27,7 @@ class AlunoRequest extends FormRequest
             'nome' => 'required',
             'sobrenome' => 'required',
             'sexo' => 'required',
-            'data_Nascimento' => 'required|date',
+            'data_Nascimento' => 'required|date_format:dd/mm/yyyy',
             'tel' => 'required',
             'email' => 'required|email'
         ];

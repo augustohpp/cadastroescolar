@@ -6,11 +6,11 @@
     @csrf
     <div class="card">
         <div class="card-header">
-            <h4 class="col-12 modal-title text-center">Novo Cadastro de Professor</h5>
+            <h2 class="col-12 modal-title text-center">Novo Cadastro de Professor</h2>
         </div>
         <h6 class="col-12 modal-title text-center">Campos com * são obrigatorios</h6>
         <div class="container col-11">
-            <input type="hidden" id="id" class="form-control">
+            {{-- <input type="hidden" id="id" class="form-control"> --}}
 
                 {{--- Formulario Nome ---}}
             <div class="form-row">

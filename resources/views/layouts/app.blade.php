@@ -13,7 +13,7 @@
     <link rel="icon" href="{{asset('assets/img/logo_prefeitura.ico')}}" type="image/x-icon" />
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ as set('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -71,8 +71,18 @@
                     reverse: true
                 });
             });
-
         </script>
+
+        {{-- JsValidation --}}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+        @hasSection ('javascript2')
+	
+	        @yield('javascript2')
+
+        @endif
     </footer>
 </body>
 </html>

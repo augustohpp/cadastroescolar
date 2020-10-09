@@ -33,22 +33,22 @@
         <h4 style="margin-top: 50px"><strong></strong><br /></h4>
     </div>
     <table class="table">
-        <thead align="center">
+        <thead >
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Sobrenome</th>
+                <th>Email</th>
                 <th>Turma</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($cadastros as $cadastro)
+            @foreach ($collection as $cadastro)
            
             <tr>
                 <td>{{$cadastro->id}}</td>
-                <td>{{$cadastro->nome}}</td>
-                <td>{{$cadastro->sobrenome}}</td>
-                {{-- <td>{{$cadastro->turma}}</td> --}}
+                <td>{{$cadastro->nome}} {{$cadastro->sobrenome}}</td>
+                <td>{{$cadastro->email}}</td>
+                <td>{{$cadastro->turma->turma}}</td>
             </tr>
             @endforeach
         </tbody>

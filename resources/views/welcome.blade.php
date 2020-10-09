@@ -7,7 +7,7 @@
     <div class="row d-flex justify-content-around">
         <div class="col-sm-3">
             <div class="card text-center">
-                <img class="card-img-top" src="{{ URL::to('/imagens/images.png') }}" alt="">
+                <img class="card-img-top image2" src="{{ URL::to('/imagens/alunos.jpg') }}" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Alunos</h4>
                     <p class="card-text"></p>
@@ -17,7 +17,7 @@
         </div>
         <div class="col-sm-3">
             <div class="card text-center">
-                <img class="card-img-top" src="{{ URL::to('/imagens/images.png') }}" alt="">
+                <img class="card-img-top image2" src="{{ URL::to('/imagens/turmas.jpg') }}" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Turmas</h4>
                     <p class="card-text"></p>
@@ -27,7 +27,7 @@
         </div>
         <div class="col-sm-3">
             <div class="card text-center">
-                <img class="card-img-top" src="{{ URL::to('/imagens/images.png') }}" alt="">
+                <img class="card-img-top image2" src="{{ URL::to('/imagens/professores.jpg') }}" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Professores</h4>
                     <p class="card-text"></p>

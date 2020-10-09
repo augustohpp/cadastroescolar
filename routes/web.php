@@ -12,14 +12,17 @@
 */
 
 use Illuminate\Database\Eloquent\Collection;
+// use Illuminate\Routing\Route;
 use App\Aluno;
 use App\Alunoturma;
 use App\Professor;
-
+use App\Turma;
+use App\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 
 Route::get('/', function() {
     return view('welcome');
-});//->middleware('auth');
+})->middleware('auth');
 
 /* Routes Alunos */
 
@@ -30,13 +33,7 @@ Route::get('/alunos/info/{id}', 'AlunoController@show');
 Route::get('/alunos/delete/{id}', 'AlunoController@destroy');
 Route::get('/alunos/editar/{id}', 'AlunoController@edit');
 Route::post('/alunos/{id}', 'AlunoController@update');
-//Route::post('/pdf', 'AlunoTurmaController@get');
-Route::get('/pdf',function() {
-    $collection = Aluno::all(); 
-    $cadastros = json_decode(json_encode($collection));
-    $pdf = \PDF::loadView('pdf', compact('cadastros'));
-    return $pdf->stream('exemplo.pdf');
-})->name('pdf');
+Route::get('/pdf', 'AlunoController@pdf')->name('pdf');
 
 /* Routes Professores */
 
@@ -61,12 +58,11 @@ Route::post('/turmas/{id}', 'TurmaController@update');
 /* Route para Login */
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
-// /* Login Admin */
-// Route::get('/admin', 'AdminController@index')->name('homeadmin');
+Route::get('/user', 'UserController@show')->name('listaUser');
+Route::get('/home', 'UserController@index')->name('home');
 
-// Route::get('/admin/login', 'Auth\AdminLoginController@index')->name('admin.login');
-// Route::post('/admin/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-
-
+Route::get('/teste', function(){
+    $alunos = Aluno::get();
+    return view('teste', compact('alunos'));
+});

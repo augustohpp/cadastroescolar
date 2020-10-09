@@ -15,7 +15,8 @@ class Aluno extends Model
         'data_Nascimento',
         'tel',
         'tel2',
-        'email'
+        'email',
+        'turma_id'
     ];
 
     public function endereco()
@@ -23,9 +24,14 @@ class Aluno extends Model
         return $this->hasOne('App\Endereco');
     }
 
+    // public function turma()
+    // {
+    //     return $this->belongsToMany('App\Turma', 'alunoturmas');
+    // }
+
     public function turma()
     {
-        return $this->belongsToMany('App\Turma', 'alunoturmas');
+        return $this->belongsTo('App\Turma');
     }
 
 }

@@ -29,7 +29,7 @@ class ProfessorRequest extends FormRequest
             'sexo' => 'required',
             'data_Nascimento' => 'required|date_format:dd/mm/yyyy|min:8',
             'tel' => 'required',
-            'email' => 'required|rfc',
+            'email' => 'required|email',
         ];
     }
 

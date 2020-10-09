@@ -21,13 +21,36 @@
                 <td>
                     <a href="/alunos/info/{{$aluno->id}}">Info</a>
                     <a href="/alunos/editar/{{$aluno->id}}">Editar</a>
-                    <a href="/alunos/delete/{{$aluno->id}}">Deletar</a>
+                    {{-- <a href="#exampleModal" data-id = "@php $id = $aluno->id @endphp" data-toggle="modal">Deletar</a> --}}
+                    <a href="/alunos/delete/{{$aluno->id}}" class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
+<!-- Modal Confirmação Delete -->
+{{-- <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Você tem certeza?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja apagar os dados do aluno {{$id}}?
+                Não é possível a recuperação dos dados.
+            </div>    
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <a href="/alunos/delete/{{$id}}" class="btn btn-danger">Deletar</a>
+            </div>
+        </div>
+    </div>
+</div> --}}
 
 <script>
     $(document).ready(function () {

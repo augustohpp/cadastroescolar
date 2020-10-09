@@ -38,7 +38,7 @@
                     <label for="Turma" class="control-label">Turma:</label>
                     <div class="input-group">
                         <select class="form-control" name="turma_id" id="turma_id">
-                            <option value="" disabled selected>*</option>
+                            <option value="" disabled selected></option>
                             @foreach ($turmas as $turma)
                                 <option value="{{$turma->id}}">{{$turma->turma}}
                             @endforeach
