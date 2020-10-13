@@ -14,11 +14,11 @@
 use Illuminate\Database\Eloquent\Collection;
 // use Illuminate\Routing\Route;
 use App\Aluno;
-use App\Alunoturma;
 use App\Professor;
 use App\Turma;
 use App\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function() {
     return view('welcome');
@@ -63,6 +63,6 @@ Route::get('/user', 'UserController@show')->name('listaUser');
 Route::get('/home', 'UserController@index')->name('home');
 
 Route::get('/teste', function(){
-    $alunos = Aluno::get();
-    return view('teste', compact('alunos'));
+    $user = Auth::user();
+    return view('teste', compact('user'));
 });

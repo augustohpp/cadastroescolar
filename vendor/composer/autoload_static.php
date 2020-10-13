@@ -421,7 +421,6 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
     public static $classMap = array (
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Aluno' => __DIR__ . '/../..' . '/app/Aluno.php',
-        'App\\Alunoturma' => __DIR__ . '/../..' . '/app/Alunoturma.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Endereco' => __DIR__ . '/../..' . '/app/Endereco.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

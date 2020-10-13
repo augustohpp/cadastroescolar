@@ -24,11 +24,6 @@ class Aluno extends Model
         return $this->hasOne('App\Endereco');
     }
 
-    // public function turma()
-    // {
-    //     return $this->belongsToMany('App\Turma', 'alunoturmas');
-    // }
-
     public function turma()
     {
         return $this->belongsTo('App\Turma');

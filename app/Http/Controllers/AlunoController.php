@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aluno;
-use App\Alunoturma;
 use App\Endereco;
 use App\Turma;
 // use Dotenv\Validator;
@@ -59,8 +58,16 @@ class AlunoController extends Controller
         $aluno->tel2 = $request->input('tel2');
         $aluno->email = $request->input('email');
         $aluno->turma_id = $request->input('turma_id');
+
+        $idTurma = $request->input('turma_id');
+        $turma = Turma::find($idTurma);
+
+        if ($turma->aluno->count() < $turma->vagas) {
+            $aluno->save();
+        } else {
+            return redirect()->back();
+        }
         
-        $aluno->save();
         $idAluno = $aluno->id;
         
         $endereco = new Endereco();
@@ -72,38 +79,8 @@ class AlunoController extends Controller
         $endereco->complemento = $request->input('complemento');
         $endereco->aluno_id = $idAluno;
         $endereco->save();
-        
-        
-        // $alunoTurma = new Alunoturma();
-        // $alunoTurma->turma_id = $request->input('turma_id');
-        // $alunoTurma->aluno_id = $idAluno;
-        // $alunoTurma->save();
 
-        
-        // $turma = Turma::where('id', $alunoTurma->turma_id)->get();
-        // // dd($turma);
-        
-        // // $aa = $turma->aluno;
-        // // $bb = $aa->count();
-        // // echo $bb;
-
-
-        // foreach ($turma as $key => $value) {
-        //     // echo $value['turma'];
-        //     // echo '<hr>';
-        //     // echo $value['vagas'];
-        //     // echo '<hr>';
-        //     if ($value['vagas' > 4]) {
-        //         return 'Funciona';
-        //     }else {
-        //         return $value['turma'];
-        //     }
-        // }
-        
         return redirect()->route('listaAluno');
-
-        
-
     }
 
     /**
@@ -115,9 +92,8 @@ class AlunoController extends Controller
     public function show($id)
     {
         $alunos = Aluno::find($id);
-        $turma = Alunoturma::where('aluno_id',$id);
         
-        return view('viewsAlunos.infoAlunos', compact('alunos', 'turma'));
+        return view('viewsAlunos.infoAlunos', compact('alunos'));
     }
 
     /**
@@ -166,11 +142,6 @@ class AlunoController extends Controller
             'numero'=>$request->numero,
             'complemento'=>$request->complemento,
         ]);
-
-        // $turma = Alunoturma::where('aluno_id', $id);
-        // $turma->update([
-        //     'turma_id'=>$request->turma_id,
-        // ]);
 
         return redirect(route('listaAluno'));
     }
