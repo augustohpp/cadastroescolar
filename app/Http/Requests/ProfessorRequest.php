@@ -27,8 +27,9 @@ class ProfessorRequest extends FormRequest
             'nome' => 'required|min:3',
             'sobrenome' => 'required|min:3',
             'sexo' => 'required',
-            'data_Nascimento' => 'required|date_format:dd/mm/yyyy|min:8',
-            'tel' => 'required',
+            'data_Nascimento' => 'required|date|min:10',
+            'tel' => 'required|min:16',
+            'tel2' => 'min:16',
             'email' => 'required|email',
         ];
     }
@@ -37,12 +38,18 @@ class ProfessorRequest extends FormRequest
     {
         return [
             'nome.required' => 'Insira o nome',
+            'nome.min' => 'Insira um nome válido',
             'sobrenome.required' => 'Insira o sobrenome',
+            'sobrenome.min' => 'Insira um nome válido',
             'sexo.required' => 'Selecione o sexo',
             'data_Nascimento.required' => 'Insira a data de nascimento',
             'data_Nascimento.min' => 'Insira uma data válida',
+            'data_Nascimento.date' => 'Insira uma data válida',
             'tel.required' => 'Insira um telefone',
+            'tel.min' => 'Número de telefone inválido',
+            'tel2.min' => 'Número de telefone inválido',
             'email.required' => 'Insira um email',
+            'email.email' => 'Email inválido',
         ];
     }
 }
