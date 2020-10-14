@@ -66,6 +66,7 @@ class AlunoController extends Controller
             $aluno->save();
         } else {
             return redirect()->back();
+            echo '<h1>AAAAAAA</h1>';
         }
         
         $idAluno = $aluno->id;
