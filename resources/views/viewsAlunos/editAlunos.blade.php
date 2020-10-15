@@ -1,4 +1,4 @@
-{{--- EDIÇÃO DE ALUNOS ---}}
+                                {{--- EDIÇÃO DE ALUNOS ---}}
 
 @extends('cadastro')
 @section('form')
@@ -39,9 +39,11 @@
                     <div class="input-group">
                         <select class="form-control" name="turma_id" id="turma_id">
                             @foreach ($turmas as $turma)
-                                <option value="{{$turma->id}}" {{ $alunos->turma_id == $turma->id ? 'selected' : '' }}>{{$turma->turma}}
+                                <option value="{{$turma->id}}" data-vagas="{{$turma->vagas}}" data-count="{{$turma->aluno->count()}}"
+                                    {{ $alunos->turma_id == $turma->id ? 'selected' : '' }}>{{$turma->turma}}
                             @endforeach
                         </select>
+                        <div class="erro"></div>
                     </div>
                 </div>
                 
@@ -64,7 +66,7 @@
                 <div class="form-group col-md-6">
                     <label for="data_nascimento" class="control-label">Data de Nascimento: *</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="data_nascimento" name="data_Nascimento" placeholder="dd/mm/yyyy"
+                        <input type="text" class="form-control" id="data_Nascimento" name="data_Nascimento" placeholder="dd-mm-yyyy"
                             value="{{ $alunos->data_Nascimento }}" required>
                     </div>
                 </div>
@@ -177,5 +179,41 @@
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\AlunoRequest','#formAluno' ) !!}
+
+<script type="text/javascript">
+
+    turmaValidation();
+    submit();
+
+    function turmaValidation() {
+        $('#turma_id').change(function() {
+            var count = "";
+            var vagas = "";
+            $('#turma_id option:selected').each(function() {
+                count += $(this).attr('data-count');
+                vagas += $(this).attr('data-vagas');
+            });
+
+            if (count == vagas) {
+                $('#turma_id').css('border-color', '#dc3545');
+                $('.erro').append('<span class="error-help-block">Turma cheia</span>');
+            } else {
+                $('#turma_id').css('border-color', '#28a745');
+                $('.error-help-block').remove();
+            }
+        });
+    };
+
+    function submit(){
+        $('#formAluno').submit(function() {
+            if ($('#turma_id').css('border-color') == 'rgb(220, 53, 69)') {
+                $('.error-help-block').remove();
+                $('.erro').append('<span class="error-help-block">Turma cheia</span>');
+                return false;
+            }
+        });
+    };
+
+</script>
 
 @endsection

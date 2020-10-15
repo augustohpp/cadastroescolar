@@ -40,9 +40,12 @@
                         <select class="form-control" name="turma_id" id="turma_id">
                             <option value="" disabled selected></option>
                             @foreach ($turmas as $turma)
-                                <option value="{{$turma->id}}">{{$turma->turma}}
+                                <option value="{{$turma->id}}" data-vagas="{{$turma->vagas}}" data-count="{{$turma->aluno->count()}}">
+                                    {{$turma->turma}}
+                                </option>
                             @endforeach
                         </select>
+                        <div class="erro"></div>
                     </div>
                 </div>
 
@@ -166,10 +169,11 @@
   
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Salvar</button>
-            <a class="btn btn-secondary" href="#">Cancelar</a>
+            <a class="btn btn-secondary" href="{{ url()->previous() }}">Cancelar</a>
         </div>
     </div><!-- Card -->
 </form>
+
 @endsection
 
 @section('javascript')
@@ -177,5 +181,41 @@
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\AlunoRequest','#formAluno' ) !!}
+
+<script type="text/javascript">
+
+    turmaValidation();
+    submit();
+
+    function turmaValidation() {
+        $('#turma_id').change(function() {
+            var count = "";
+            var vagas = "";
+            $('#turma_id option:selected').each(function() {
+                count += $(this).attr('data-count');
+                vagas += $(this).attr('data-vagas');
+            });
+
+            if (count == vagas) {
+                $('#turma_id').css('border-color', '#dc3545');
+                $('.erro').append('<span class="error-help-block">Turma cheia</span>');
+            } else {
+                $('#turma_id').css('border-color', '#28a745');
+                $('.error-help-block').remove();
+            }
+        });
+    };
+
+    function submit(){
+        $('#formAluno').submit(function() {
+            if ($('#turma_id').css('border-color') == 'rgb(220, 53, 69)') {
+                $('.error-help-block').remove();
+                $('.erro').append('<span class="error-help-block">Turma cheia</span>');
+                return false;
+            }
+        });
+    };
+
+</script>
 
 @endsection

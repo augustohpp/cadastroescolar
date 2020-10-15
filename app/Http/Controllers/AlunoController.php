@@ -58,16 +58,7 @@ class AlunoController extends Controller
         $aluno->tel2 = $request->input('tel2');
         $aluno->email = $request->input('email');
         $aluno->turma_id = $request->input('turma_id');
-
-        $idTurma = $request->input('turma_id');
-        $turma = Turma::find($idTurma);
-
-        if ($turma->aluno->count() < $turma->vagas) {
-            $aluno->save();
-        } else {
-            return redirect()->back();
-            echo '<h1>AAAAAAA</h1>';
-        }
+        $aluno->save();        
         
         $idAluno = $aluno->id;
         

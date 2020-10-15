@@ -6015,9 +6015,9 @@ label {
 } */
 
 .error-help-block {
-    color: #f25961 !important;
-    font-style: italic;
-    font-size: 12px;
+    color: #dc3545 !important;
+    /* font-style: italic; */
+    font-size: 80%;
 }
 
 .has-error .form-control {

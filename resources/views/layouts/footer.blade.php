@@ -34,13 +34,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script> --}}
 
 <script>
-            $(document).ready(function ($) {
-                $('#data_Nascimento').mask('00-00-0000');
-                $('#tel').mask('(00) 0 0000-0000');
-                $('#tel2').mask('(00) 0 0000-0000');
-                $('#cep').mask('00000-000');
-            });
-        </script>
+    $(document).ready(function ($) {
+        $('#data_Nascimento').mask('00-00-0000');
+        $('#tel').mask('(00) 0 0000-0000');
+        $('#tel2').mask('(00) 0 0000-0000');
+        $('#cep').mask('00000-000');
+    });
+</script>
 
 @hasSection ('javascript')
 	
