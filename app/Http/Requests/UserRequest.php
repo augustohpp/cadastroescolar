@@ -24,11 +24,11 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'cpf' => 'required|cpf',
-            'password' => 'required',
-            'password_confirmation' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|unique',
+            'cpf' => 'required|min:14',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|confirmed',
             'categoria' => 'required',
         ];
     }
@@ -39,6 +39,7 @@ class UserRequest extends FormRequest
             'name.required' => 'Insira um nome',
             'email.required' => 'Insira um email',
             'cpf.required' => 'Insira um cpf',
+            'cpf.cpf' => 'Cpf inválido',
             'password.required' => 'Insira uma senha',
             'password_confirmation.required' => 'Confirme sua senha',
             'categoria.required' => 'Selecione a categoria do usuário',

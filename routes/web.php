@@ -19,6 +19,7 @@ use App\Turma;
 use App\User;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Support\Facades\Auth;
+use OwenIt\Auditing\Models\Audit;
 
 Route::get('/', function() {
     return view('welcome');
@@ -55,14 +56,31 @@ Route::get('/turmas/delete/{id}', 'TurmaController@destroy');
 Route::get('/turmas/editar/{id}', 'TurmaController@edit');
 Route::post('/turmas/{id}', 'TurmaController@update');
 
-/* Route para Login */
-
-Auth::routes();
-
-Route::get('/user', 'UserController@show')->name('listaUser');
-Route::get('/home', 'UserController@index')->name('home');
 
 Route::get('/teste', function(){
-    $user = Auth::user();
-    return view('teste', compact('user'));
+    $audits = Audit::find(2);
+    return view('teste', compact('audits'));
 });
+
+// Routes para Login
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Routes para Registrar
+Route::get('/usuarios/novo', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('/usuarios/novo', 'Auth\RegisterController@register');
+
+// Routes para Resetar Senhas
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// Demais Routes
+Route::get('/usuarios', 'UserController@show')->name('listaUser');
+Route::get('/home', 'UserController@index')->name('home');
+Route::get('/usuarios/delete/{id}', 'UserController@destroy');
+Route::get('/usuarios/auditoria/{id}', 'UserController@audit');
+
+// Auth::routes();

@@ -29,7 +29,7 @@ class AlunoRequest extends FormRequest
             'sexo' => 'required',
             'data_Nascimento' => 'required|date|min:10',
             'tel' => 'required|min:16',
-            // 'tel2' => 'min:16',
+            'tel2' => 'min:16',
             'email' => 'required|email'
         ];
     }

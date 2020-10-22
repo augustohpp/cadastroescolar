@@ -39,8 +39,8 @@
                     <div class="input-group">
                         <select name="sexo" id="sexo" class="form-control">
                             <option value="" selected disabled>Selecione um sexo</option>
-                            <option value="masculino">Masculino</option>
-                            <option value="feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
                         </select>
                     </div>
                 </div>

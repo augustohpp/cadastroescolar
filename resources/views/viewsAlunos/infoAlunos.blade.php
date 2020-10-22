@@ -14,8 +14,12 @@
             </div>
 
             <div class="col-6 border">
-                <h4 class="border-bottom  font-weight-bold">Turma do Aluno</h4> 
+                <h4 class="border-bottom  font-weight-bold">Turma do Aluno</h4>
+                @if ($alunos->turma != null) 
                 <p>{{$alunos->turma->turma}}</p>
+                @else 
+                Não está matriculado
+                @endif
             </div>
 
             <div class="col-6 border">

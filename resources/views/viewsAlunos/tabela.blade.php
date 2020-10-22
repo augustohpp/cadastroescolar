@@ -7,8 +7,8 @@
         <thead align="center">
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Sobrenome</th>
+                <th>Nome Completo</th>
+                <th>Turma</th>
                 <th>Opções</th>
             </tr>
         </thead>
@@ -16,12 +16,17 @@
            @foreach ($alunos as $aluno)
             <tr>
                 <td>{{$aluno->id}}</td>
-                <td>{{$aluno->nome}}</td>
-                <td>{{$aluno->sobrenome}}</td>
+                <td>{{$aluno->nome}} {{$aluno->sobrenome}}</td>
+                <td>
+                    @if ($aluno->turma != null)
+                    {{$aluno->turma->turma}}
+                    @else 
+                    Não está matriculado
+                    @endif
+                </td>
                 <td>
                     <a href="/alunos/info/{{$aluno->id}}">Info</a>
                     <a href="/alunos/editar/{{$aluno->id}}">Editar</a>
-                    {{-- <a href="#exampleModal" {{$id = $aluno->id}} data-toggle="modal">Deletar</a> --}}
                     <a href="/alunos/delete/{{$aluno->id}}" data-confirm='Tem certeza que deseja excluir o item selecionado?' class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
@@ -29,10 +34,6 @@
         </tbody>
     </table>
 </div>
-
-
-<!-- Modal Confirmação Delete -->
-
 
 <script>
     $(document).ready(function () {

@@ -51,11 +51,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $messages = [
+            'unique' => 'Email fornecido já está cadastrado',
+            'confirmed' => 'senhas incompativeis',
+        ];
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            // 'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'password_confirmation' => ['confirmed'],
+        ],$messages);
     }
 
     /**

@@ -41,7 +41,10 @@
                                 <td>{{$tecTi->name}}</td>
                                 <td>{{$tecTi->email}}</td>
                                 <td>
-                                    <a href="/alunos/delete/{{$tecTi->id}}">Deletar</a>
+                                    @if(Gate::allows('define-categ'))
+                                    <a href="/usuarios/delete/{{$tecTi->id}}" class="btn btn-danger">Deletar</a>
+                                    @endif
+                                    <a href="/usuarios/auditoria/{{$tecTi->id}}" class="btn btn-info">Atividade</a>
                                 </td>
                             </tr>
                         @endif
@@ -78,7 +81,10 @@
                                 <td>{{$gestor->name}}</td>
                                 <td>{{$gestor->email}}</td>
                                 <td>
-                                    <a href="/alunos/delete/{{$gestor->id}}">Deletar</a>
+                                    @if(Gate::allows('define-categ'))
+                                    <a href="/usuarios/delete/{{$gestor->id}}" class="btn btn-danger">Deletar</a>
+                                    @endif
+                                    <a href="/usuarios/auditoria/{{$gestor->id}}" class="btn btn-info">Atividade</a>
                                 </td>
                             </tr>
                         @endif
@@ -110,15 +116,16 @@
                     </thead>
                     <tbody align="center">
                         @foreach ($users as $operadores)
-                        @if($operadores->categoria == 3)
-                            <tr>
-                                <td>{{$operadores->name}}</td>
-                                <td>{{$operadores->email}}</td>
-                                <td>
-                                    <a href="/alunos/delete/{{$operadores->id}}">Deletar</a>
-                                </td>
-                            </tr>
-                        @endif
+                            @if($operadores->categoria == 3)
+                                <tr>
+                                    <td>{{$operadores->name}}</td>
+                                    <td>{{$operadores->email}}</td>
+                                    <td>
+                                        <a href="/usuarios/delete/{{$operadores->id}}" class="btn btn-danger">Deletar</a>
+                                        <a href="/usuarios/auditoria/{{$operadores->id}}" class="btn btn-info">Atividade</a>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

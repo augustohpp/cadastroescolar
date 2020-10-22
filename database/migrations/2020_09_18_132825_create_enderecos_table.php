@@ -14,6 +14,7 @@ class CreateEnderecosTable extends Migration
     public function up()
     {
         Schema::create('enderecos', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('aluno_id')->unsigned();
             $table->foreign('aluno_id')
                 ->references('id')->on('alunos')

@@ -38,7 +38,7 @@
                     <label for="Turma" class="control-label">Turma:</label>
                     <div class="input-group">
                         <select class="form-control" name="turma_id" id="turma_id">
-                            <option value="" disabled selected></option>
+                            <option value="" data-vagas="" data-count="0"></option>
                             @foreach ($turmas as $turma)
                                 <option value="{{$turma->id}}" data-vagas="{{$turma->vagas}}" data-count="{{$turma->aluno->count()}}">
                                     {{$turma->turma}}
@@ -197,6 +197,7 @@
             });
 
             if (count == vagas) {
+                $('.error-help-block').remove()
                 $('#turma_id').css('border-color', '#dc3545');
                 $('.erro').append('<span class="error-help-block">Turma cheia</span>');
             } else {

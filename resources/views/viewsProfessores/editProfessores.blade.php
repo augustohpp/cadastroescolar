@@ -39,8 +39,8 @@
                     <div class="input-group">
                         <select name="sexo" id="sexo" class="form-control">
                             <option value="" selected disabled>Selecione um sexo</option>
-                            <option value="masculino" {{ $prof->sexo=='masculino' ? 'selected' : '' }}>Masculino</option>
-                            <option value="feminino" {{ $prof->sexo=='feminino' ? 'selected' : '' }}>Feminino</option>
+                            <option value="Masculino" {{ $prof->sexo=='Masculino' ? 'selected' : '' }}>Masculino</option>
+                            <option value="Feminino" {{ $prof->sexo=='Feminino' ? 'selected' : '' }}>Feminino</option>
                         </select>
                     </div>
                 </div>

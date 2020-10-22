@@ -120,7 +120,7 @@
                         aria-controls="collapseOne" id="base3">
                         <ul class="nav nav-collapse ">
                             <li class="">
-                                <a href="/register">
+                                <a href="{{ route('register') }}">
                                     <span class="sub-item">Cadastro</span>
                                 </a>
                             </li>

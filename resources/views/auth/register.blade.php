@@ -38,7 +38,7 @@
 
                     <div class="form-group col-6">
                         <div class="input-group">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                            <input id="password-confirmation" type="password" class="form-control" name="password_confirmation"
                                 autocomplete="new-password" placeholder="Confirmar senha">
                         </div>
                     </div>

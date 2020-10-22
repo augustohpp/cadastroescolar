@@ -55,8 +55,8 @@
                     <label for="sexo" class="control-label">Sexo: *</label>
                     <div class="input-group">
                         <select name="sexo" id="sexo" class="form-control" required>
-                            <option value="masculino" {{ $alunos->sexo == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                            <option value="feminino" {{ $alunos->sexo == 'feminino' ? 'selected' : '' }}>Feminino</option>
+                            <option value="Masculino" {{ $alunos->sexo == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                            <option value="Feminino" {{ $alunos->sexo == 'Feminino' ? 'selected' : '' }}>Feminino</option>
                         </select>
                     </div>
                 </div>
