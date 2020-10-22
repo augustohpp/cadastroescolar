@@ -115,4 +115,11 @@ class ProfessorController extends Controller
         }
         return redirect()->route('listaProfessor');
     }
+
+    public function pdf()
+    {
+        $collection = Professor::get();
+        $pdf = \PDF::loadView('viewsProfessores.pdf', compact('collection'));
+        return $pdf->stream('exemplo.pdf');
+    }
 }

@@ -118,6 +118,13 @@ class TurmaController extends Controller
 
         return redirect()->route('listaTurma');
     }
+
+    public function pdf()
+    {
+        $collection = Turma::get();
+        $pdf = \PDF::loadView('viewsTurmas.pdf', compact('collection'));
+        return $pdf->stream('exemplo.pdf');
+    }
 }
 
 

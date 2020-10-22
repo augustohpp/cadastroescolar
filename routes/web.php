@@ -34,7 +34,7 @@ Route::get('/alunos/info/{id}', 'AlunoController@show');
 Route::get('/alunos/delete/{id}', 'AlunoController@destroy');
 Route::get('/alunos/editar/{id}', 'AlunoController@edit');
 Route::post('/alunos/{id}', 'AlunoController@update');
-Route::get('/pdf', 'AlunoController@pdf')->name('pdf');
+Route::get('/alunos/pdf', 'AlunoController@pdf')->name('pdfAluno');
 
 /* Routes Professores */
 
@@ -45,6 +45,7 @@ Route::get('/professores/info/{id}', 'ProfessorController@show');
 Route::get('/professores/delete/{id}', 'ProfessorController@destroy');
 Route::get('/professores/editar/{id}', 'ProfessorController@edit');
 Route::post('/professores/{id}', 'ProfessorController@update');
+Route::get('/professores/pdf', 'ProfessorController@pdf')->name('pdfProfessor');
 
 /* Routes Turmas */
 
@@ -55,6 +56,7 @@ Route::get('/turmas/info/{id}', 'TurmaController@show');
 Route::get('/turmas/delete/{id}', 'TurmaController@destroy');
 Route::get('/turmas/editar/{id}', 'TurmaController@edit');
 Route::post('/turmas/{id}', 'TurmaController@update');
+Route::get('/turmas/pdp', 'TurmaController@pdf')->name('pdfTurma');
 
 
 Route::get('/teste', function(){

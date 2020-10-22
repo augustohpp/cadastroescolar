@@ -47,7 +47,7 @@
                                 </a>
                             </li>
                             <li class="{{ (request()->routeIs('pdf')) ? 'active' : '' }}">
-                                <a href="{{ route('pdf') }}">
+                                <a href="{{ route('pdfAluno') }}">
                                     <span class="sub-item">PDF</span>
                                 </a>
                             </li>
@@ -61,7 +61,7 @@
                         <p>Turmas</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="expandable collapse" id="sidebarLayouts">
+                    <div class="expandable collapse {{ (request()->routeIs('cadastroTurma')) || (request()->routeIs('listaTurma')) || (request()->routeIs('pdf')) ? 'show' : '' }}" id="sidebarLayouts">
                         <ul class="nav nav-collapse">
                             <li class="{{ (request()->routeIs('cadastroTurma')) ? 'active' : '' }}">
                                 <a href="{{ route('cadastroTurma') }}">
@@ -74,7 +74,7 @@
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#">
+                                <a href="{{ route('pdfTurma') }}">
                                     <span class="sub-item">PDF</span>
                                 </a>
                             </li>
@@ -101,7 +101,7 @@
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#">
+                                <a href="{{ route('pdfProfessor') }}">
                                     <span class="sub-item">PDF</span>
                                 </a>
                             </li>

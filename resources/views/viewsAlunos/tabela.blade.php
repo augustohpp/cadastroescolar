@@ -25,8 +25,8 @@
                     @endif
                 </td>
                 <td>
-                    <a href="/alunos/info/{{$aluno->id}}">Info</a>
-                    <a href="/alunos/editar/{{$aluno->id}}">Editar</a>
+                    <a href="/alunos/info/{{$aluno->id}}" class="btn btn-info" >Info</a>
+                    <a href="/alunos/editar/{{$aluno->id}}" class="btn btn-primary">Editar</a>
                     <a href="/alunos/delete/{{$aluno->id}}" data-confirm='Tem certeza que deseja excluir o item selecionado?' class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
