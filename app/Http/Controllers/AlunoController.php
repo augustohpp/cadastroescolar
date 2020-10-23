@@ -161,4 +161,9 @@ class AlunoController extends Controller
         $pdf = \PDF::loadView('pdf', compact('collection'));
         return $pdf->stream('exemplo.pdf');
     }
+
+    public function pao(Request $request)
+    {
+        dd($request->all());
+    }
 }
