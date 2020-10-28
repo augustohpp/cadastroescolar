@@ -10,7 +10,6 @@
         </div>
         <h6 class="col-12 modal-title text-center">Campos com * são obrigatorios</h6>
         <div class="container col-11">
-            {{-- <input name="" value="{{$alunos->id}}" type="hidden" id="id" class="form-control"> --}}
 
                 {{--- Formulario Nome ---}}
             <div class="form-row">
@@ -173,6 +172,8 @@
         </div>
     </div><!-- Card -->
 </form>
+
+
 
 @endsection
 

@@ -51,7 +51,7 @@ class ProfessorController extends Controller
         $prof->email = $request->input('email');
         $prof->save();
         
-        return redirect()->route('listaProfessor');
+        return redirect()->route('listaProfessor')->with('success', 'Professor cadastrado com sucesso.');
     }
 
     /**
@@ -88,7 +88,7 @@ class ProfessorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $prof = Professor::where('id',$id);
+        $prof = Professor::find($id);
         $prof->update([
             'nome'=>$request->nome,
             'sobrenome'=>$request->sobrenome,
@@ -98,7 +98,7 @@ class ProfessorController extends Controller
             'tel2'=>$request->tel2,
             'email'=>$request->email,
         ]);
-        return redirect()->route('listaProfessor');
+        return redirect()->route('listaProfessor')->with('success', 'Professor editado com sucesso.');
     }
 
     /**
@@ -113,7 +113,7 @@ class ProfessorController extends Controller
         if (isset($id)) {
             $del->delete();
         }
-        return redirect()->route('listaProfessor');
+        return redirect()->route('listaProfessor')->with('success', 'Professor deletado com sucesso.');
     }
 
     public function pdf()

@@ -2,6 +2,23 @@
 @section('title','EXEMPLO')
 @section('content')
 
+<div class="col-4" id="toast">
+    @if (session('success'))
+        <div class="border border-primary rounded p-2" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="border-bottom pb-1">
+                <div class="rounded mr-2 bg-primary" style="width: 20px; height: 20px; float: left; clear: both"></div>
+                <strong class="mr-auto">Sucesso!</strong>
+                <button type="button" class="ml-2 mb-1 close" id="fechar">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body pt-2">
+                {{ session('success') }}
+            </div>
+        </div>
+    @endif
+</div>
+
 <div class="container-fluid no-padding table-responsive-sm">
     <table class="table table-striped nowrap" style="width:100%" id="exemplo">
         <thead align="center">
@@ -81,5 +98,13 @@
             return false;
         });
     });
+
+    $('#fechar').click(function(){
+        $('#toast').fadeOut();
+    });
+
+    setTimeout(function(){
+        $('#toast').fadeOut();
+    },3000)
 </script>
 @endsection

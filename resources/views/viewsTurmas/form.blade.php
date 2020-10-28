@@ -29,7 +29,7 @@
                         <select name="nivel" id="nivel" class="form-control">
                             <option value="" selected disabled>Selecione uma Opção</option>
                             <option value="Fundamental">Fundamental</option>
-                            <option value="Medio">Médio</option>
+                            <option value="Médio">Médio</option>
                         </select>
                     </div>
                 </div>

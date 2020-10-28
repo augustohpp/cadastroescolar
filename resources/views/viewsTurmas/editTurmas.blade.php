@@ -29,7 +29,7 @@
                         <select name="nivel" id="nivel" class="form-control">
                             <option value="" selected disabled>Selecione uma Opção</option>
                             <option value="Fundamental" {{ $class->nivel=='Fundamental' ? 'selected' : '' }}>Fundamental</option>
-                            <option value="Medio" {{ $class->nivel=='Medio' ? 'selected' : '' }}>Médio</option>
+                            <option value="Médio" {{ $class->nivel=='Medio' ? 'selected' : '' }}>Médio</option>
                         </select>
                     </div>
                 </div>
@@ -67,6 +67,7 @@
                             <option value="Manhã"{{ $class->turno=='Manhã' ? 'selected' : '' }}>Manhã</option>
                             <option value="Tarde"{{ $class->turno=='Tarde' ? 'selected' : '' }}>Tarde</option>
                             <option value="Noite"{{ $class->turno=='Noite' ? 'selected' : '' }}>Noite</option>
+                            <option value="Integral">Integral</option>
                         </select>
                     </div>
                 </div>

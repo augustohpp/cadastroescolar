@@ -71,7 +71,7 @@ return [
     ],
 
     'deleted' => [
-        'metadata' => 'Na data :audit_created_at, :user_name [:audit_ip_address] atualizou o registro via :audit_url',
+        'metadata' => 'Na data :audit_created_at, :user_name [:audit_ip_address] deletou o registro via :audit_url',
         'modified' => [
             'nome' => 'O nome foi deletado :old',
             'sobrenome' => 'O sobrenome foi deletado',

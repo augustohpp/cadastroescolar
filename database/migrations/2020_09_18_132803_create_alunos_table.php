@@ -27,7 +27,7 @@ class CreateAlunosTable extends Migration
                 ->nullable();
             $table->foreign('turma_id')
                 ->references('id')->on('turmas')
-                ->onDelete('cascade')
+                ->onDelete('set null')
                 ->onUpdate('cascade');
             $table->timestamps();
         });

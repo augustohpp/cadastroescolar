@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|unique',
+            'email' => 'required|unique:users,email',
             'cpf' => 'required|min:14',
             'password' => 'required|min:8',
             'password_confirmation' => 'required|confirmed',
@@ -39,7 +39,6 @@ class UserRequest extends FormRequest
             'name.required' => 'Insira um nome',
             'email.required' => 'Insira um email',
             'cpf.required' => 'Insira um cpf',
-            'cpf.cpf' => 'Cpf inválido',
             'password.required' => 'Insira uma senha',
             'password_confirmation.required' => 'Confirme sua senha',
             'categoria.required' => 'Selecione a categoria do usuário',

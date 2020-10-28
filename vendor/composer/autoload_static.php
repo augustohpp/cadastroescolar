@@ -424,6 +424,7 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
     );
 
     public static $classMap = array (
+        'AlunosTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AlunosTableSeeder.php',
         'App\\Aluno' => __DIR__ . '/../..' . '/app/Aluno.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Endereco' => __DIR__ . '/../..' . '/app/Endereco.php',
@@ -448,8 +449,10 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\AlunoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AlunoRequest.php',
         'App\\Http\\Requests\\ProfessorRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfessorRequest.php',
+        'App\\Http\\Requests\\ResetPasswordRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ResetPasswordRequest.php',
         'App\\Http\\Requests\\TurmaRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TurmaRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
+        'App\\Notifications\\ResetDeSenha' => __DIR__ . '/../..' . '/app/Notifications/ResetDeSenha.php',
         'App\\Professor' => __DIR__ . '/../..' . '/app/Professor.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -702,6 +705,7 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+        'EnderecoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/EnderecoTableSeeder.php',
         'Faker\\Calculator\\Ean' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Ean.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',
@@ -3080,6 +3084,7 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
         'Proengsoft\\JsValidation\\Support\\RuleListTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/RuleListTrait.php',
         'Proengsoft\\JsValidation\\Support\\UseDelegatedValidatorTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/UseDelegatedValidatorTrait.php',
         'Proengsoft\\JsValidation\\Support\\ValidationRuleParserProxy' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/ValidationRuleParserProxy.php',
+        'ProfessoresTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ProfessoresTableSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
@@ -4275,6 +4280,8 @@ class ComposerStaticInit9488624909dcc9ee9cad528fc6883663
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'TurmasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/TurmasTableSeeder.php',
+        'UserTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UserTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',

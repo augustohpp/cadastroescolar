@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AlunosTableSeeder' => $baseDir . '/database/seeds/AlunosTableSeeder.php',
     'App\\Aluno' => $baseDir . '/app/Aluno.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Endereco' => $baseDir . '/app/Endereco.php',
@@ -30,8 +31,10 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\AlunoRequest' => $baseDir . '/app/Http/Requests/AlunoRequest.php',
     'App\\Http\\Requests\\ProfessorRequest' => $baseDir . '/app/Http/Requests/ProfessorRequest.php',
+    'App\\Http\\Requests\\ResetPasswordRequest' => $baseDir . '/app/Http/Requests/ResetPasswordRequest.php',
     'App\\Http\\Requests\\TurmaRequest' => $baseDir . '/app/Http/Requests/TurmaRequest.php',
     'App\\Http\\Requests\\UserRequest' => $baseDir . '/app/Http/Requests/UserRequest.php',
+    'App\\Notifications\\ResetDeSenha' => $baseDir . '/app/Notifications/ResetDeSenha.php',
     'App\\Professor' => $baseDir . '/app/Professor.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
@@ -284,6 +287,7 @@ return array(
     'Egulias\\EmailValidator\\Warning\\QuotedString' => $vendorDir . '/egulias/email-validator/EmailValidator/Warning/QuotedString.php',
     'Egulias\\EmailValidator\\Warning\\TLD' => $vendorDir . '/egulias/email-validator/EmailValidator/Warning/TLD.php',
     'Egulias\\EmailValidator\\Warning\\Warning' => $vendorDir . '/egulias/email-validator/EmailValidator/Warning/Warning.php',
+    'EnderecoTableSeeder' => $baseDir . '/database/seeds/EnderecoTableSeeder.php',
     'Faker\\Calculator\\Ean' => $vendorDir . '/fzaninotto/faker/src/Faker/Calculator/Ean.php',
     'Faker\\Calculator\\Iban' => $vendorDir . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
     'Faker\\Calculator\\Inn' => $vendorDir . '/fzaninotto/faker/src/Faker/Calculator/Inn.php',
@@ -2662,6 +2666,7 @@ return array(
     'Proengsoft\\JsValidation\\Support\\RuleListTrait' => $vendorDir . '/proengsoft/laravel-jsvalidation/src/Support/RuleListTrait.php',
     'Proengsoft\\JsValidation\\Support\\UseDelegatedValidatorTrait' => $vendorDir . '/proengsoft/laravel-jsvalidation/src/Support/UseDelegatedValidatorTrait.php',
     'Proengsoft\\JsValidation\\Support\\ValidationRuleParserProxy' => $vendorDir . '/proengsoft/laravel-jsvalidation/src/Support/ValidationRuleParserProxy.php',
+    'ProfessoresTableSeeder' => $baseDir . '/database/seeds/ProfessoresTableSeeder.php',
     'Prophecy\\Argument' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Argument.php',
     'Prophecy\\Argument\\ArgumentsWildcard' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
     'Prophecy\\Argument\\Token\\AnyValueToken' => $vendorDir . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
@@ -3857,6 +3862,8 @@ return array(
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
     'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => $vendorDir . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+    'TurmasTableSeeder' => $baseDir . '/database/seeds/TurmasTableSeeder.php',
+    'UserTableSeeder' => $baseDir . '/database/seeds/UserTableSeeder.php',
     'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
     'Whoops\\Exception\\ErrorException' => $vendorDir . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
     'Whoops\\Exception\\Formatter' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Formatter.php',

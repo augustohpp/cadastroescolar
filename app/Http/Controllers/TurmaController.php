@@ -54,7 +54,7 @@ class TurmaController extends Controller
         $professor = Professor::find($request->input('professor_id'));
         $class->professor()->associate($professor)->save();
                 
-        return redirect()->route('listaTurma');
+        return redirect()->route('listaTurma')->with('success', 'Turma criada com sucesso.');
     }
 
     /**
@@ -102,7 +102,7 @@ class TurmaController extends Controller
         ]);
         $professor = Professor::find($request->input('professor_id'));
         $class->professor()->associate($professor)->save();
-        return redirect()->route('listaTurma');
+        return redirect()->route('listaTurma')->with('success', 'Turma editada com sucesso.');
     }
 
     /**
@@ -116,7 +116,7 @@ class TurmaController extends Controller
         $del = Turma::find($id);
         $del->delete();
 
-        return redirect()->route('listaTurma');
+        return redirect()->route('listaTurma')->with('success', 'Turma deletada com sucesso.');
     }
 
     public function pdf()

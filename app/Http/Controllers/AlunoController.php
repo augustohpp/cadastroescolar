@@ -6,11 +6,6 @@ use Illuminate\Http\Request;
 use App\Aluno;
 use App\Endereco;
 use App\Turma;
-// use Dotenv\Validator;
-use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Validator;
-use Proengsoft\JsValidation\Facades\JsValidatorFacade;
-use Proengsoft\JsValidation\JsValidatorFactory;
 
 class AlunoController extends Controller
 {
@@ -71,8 +66,9 @@ class AlunoController extends Controller
         $endereco->complemento = $request->input('complemento');
         $endereco->aluno_id = $idAluno;
         $endereco->save();
-
-        return redirect()->route('listaAluno');
+        
+        
+        return redirect()->route('listaAluno')->with('success','Aluno cadastrado com sucesso,');
     }
 
     /**
@@ -125,7 +121,7 @@ class AlunoController extends Controller
             'turma_id'=>$request->turma_id,
         ]);
 
-        $endereco = Endereco::where('aluno_id', $id);
+        $endereco = Endereco::find($id);
         $endereco->update([
             'cep'=>$request->cep,
             'cidade'=>$request->cidade,
@@ -135,7 +131,7 @@ class AlunoController extends Controller
             'complemento'=>$request->complemento,
         ]);
 
-        return redirect(route('listaAluno'));
+        return redirect(route('listaAluno'))->with('success','Aluno editado com sucesso.');
     }
 
     /**
@@ -152,7 +148,7 @@ class AlunoController extends Controller
             $del2->delete();
             $del->delete();
         }
-        return redirect(route('listaAluno'));
+        return redirect(route('listaAluno'))->with('success','Aluno deletado com sucesso.');
     }
 
     public function pdf()
@@ -160,10 +156,5 @@ class AlunoController extends Controller
         $collection = Aluno::get();
         $pdf = \PDF::loadView('pdf', compact('collection'));
         return $pdf->stream('exemplo.pdf');
-    }
-
-    public function pao(Request $request)
-    {
-        dd($request->all());
     }
 }
