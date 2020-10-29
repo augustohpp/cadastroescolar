@@ -2,9 +2,10 @@
 @section('title','EXEMPLO')
 @section('content')
 
-<div class="col-4" id="toast" style="position: absolute; z-index: 999;">
-    {{-- @if (session('success')) --}}
-        <div class="border border-primary rounded p-2 bg-secondary" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="col-4" id="toast" style="position: absolute; z-index: 999; top: 70px;">
+    @if (session('success'))
+        <div class="border border-primary rounded p-2" style="background: #f8f4f4"
+            role="alert" aria-live="assertive" aria-atomic="true">
             <div class="border-bottom pb-1">
                 <div class="rounded mr-2 bg-primary" style="width: 20px; height: 20px; float: left; clear: both"></div>
                 <strong class="mr-auto">Sucesso!</strong>
@@ -13,11 +14,10 @@
                 </button>
             </div>
             <div class="toast-body pt-2">
-                {{-- {{ session('success') }} --}}
-                pao
+                {{ session('success') }}
             </div>
         </div>
-    {{-- @endif --}}
+    @endif
 </div>
 
 <div class="container-fluid no-padding table-responsive-sm">
@@ -107,8 +107,8 @@
         $('#toast').fadeOut();
     });
 
-    // setTimeout(function(){
-    //     $('#toast').fadeOut();
-    // },3000)
+    setTimeout(function(){
+        $('#toast').fadeOut();
+    },3000)
 </script>
 @endsection

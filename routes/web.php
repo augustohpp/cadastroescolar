@@ -85,9 +85,3 @@ Route::get('/home', 'UserController@index')->name('home');
 Route::get('/usuarios/delete/{id}', 'UserController@destroy');
 Route::get('/usuarios/auditoria/{id}', 'UserController@audit');
 // Auth::routes();
-
-
-Route::get('/teste', function(){
-    $aluno = Aluno::find(1);
-    return view('teste',compact('aluno'));
-});

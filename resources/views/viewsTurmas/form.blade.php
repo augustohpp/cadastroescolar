@@ -50,9 +50,9 @@
                             <option data-ano="Fundamental" value="7° ano">7º Ano</option>
                             <option data-ano="Fundamental" value="8° ano">8º Ano</option>
                             <option data-ano="Fundamental" value="9° ano">9º Ano</option>
-                            <option data-ano="Medio" value="1° ano">1º Ano</option>
-                            <option data-ano="Medio" value="2° ano">2º Ano</option>
-                            <option data-ano="Medio" value="3° ano">3º Ano</option>
+                            <option data-ano="Médio" value="1° ano">1º Ano</option>
+                            <option data-ano="Médio" value="2° ano">2º Ano</option>
+                            <option data-ano="Médio" value="3° ano">3º Ano</option>
                         </select>
                     </div>
                 </div>

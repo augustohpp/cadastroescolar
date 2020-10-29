@@ -50,9 +50,9 @@
                             <option data-ano="Fundamental" value="7° ano" {{ $class->ano=='7° ano' ? 'selected' : '' }}>7º Ano</option>
                             <option data-ano="Fundamental" value="8° ano" {{ $class->ano=='8° ano' ? 'selected' : '' }}>8º Ano</option>
                             <option data-ano="Fundamental" value="9° ano" {{ $class->ano=='9° ano' ? 'selected' : '' }}>9º Ano</option>
-                            <option data-ano="Medio" value="1° ano" {{ $class->ano=='1° ano' ? 'selected' : '' }}>1º Ano</option>
-                            <option data-ano="Medio" value="2° ano" {{ $class->ano=='2° ano' ? 'selected' : '' }}>2º Ano</option>
-                            <option data-ano="Medio" value="3° ano" {{ $class->ano=='3° ano' ? 'selected' : '' }}>3º Ano</option>
+                            <option data-ano="Médio" value="1° ano" {{ $class->ano=='1° ano' ? 'selected' : '' }}>1º Ano</option>
+                            <option data-ano="Médio" value="2° ano" {{ $class->ano=='2° ano' ? 'selected' : '' }}>2º Ano</option>
+                            <option data-ano="Médio" value="3° ano" {{ $class->ano=='3° ano' ? 'selected' : '' }}>3º Ano</option>
                         </select>
                     </div>
                 </div>

@@ -3,9 +3,10 @@
 
 @section('content')
 
-<div class="col-4" id="toast">
+<div class="col-4" id="toast" style="position: absolute; z-index: 999; top: 70px;">
     @if (session('success'))
-        <div class="border border-primary rounded p-2" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="border border-primary rounded p-2" style="background: #f8f4f4"
+            role="alert" aria-live="assertive" aria-atomic="true">
             <div class="border-bottom pb-1">
                 <div class="rounded mr-2 bg-primary" style="width: 20px; height: 20px; float: left; clear: both"></div>
                 <strong class="mr-auto">Sucesso!</strong>
