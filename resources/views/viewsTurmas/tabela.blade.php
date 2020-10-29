@@ -2,9 +2,9 @@
 @section('title','EXEMPLO')
 @section('content')
 
-<div class="col-4" id="toast">
-    @if (session('success'))
-        <div class="border border-primary rounded p-2" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="col-4" id="toast" style="position: absolute; z-index: 999;">
+    {{-- @if (session('success')) --}}
+        <div class="border border-primary rounded p-2 bg-secondary" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="border-bottom pb-1">
                 <div class="rounded mr-2 bg-primary" style="width: 20px; height: 20px; float: left; clear: both"></div>
                 <strong class="mr-auto">Sucesso!</strong>
@@ -13,10 +13,11 @@
                 </button>
             </div>
             <div class="toast-body pt-2">
-                {{ session('success') }}
+                {{-- {{ session('success') }} --}}
+                pao
             </div>
         </div>
-    @endif
+    {{-- @endif --}}
 </div>
 
 <div class="container-fluid no-padding table-responsive-sm">
@@ -42,7 +43,7 @@
                 <td>
                     <a href="/turmas/info/{{$class->id}}" class="btn btn-info">Info</a>
                     <a href="/turmas/editar/{{$class->id}}" class="btn btn-primary">Editar</a>
-                    <a href="/turmas/delete/{{$class->id}} data-confirm='Tem certeza que deseja excluir o item selecionado?'" class="btn btn-danger">Deletar</a>
+                    <a href="/turmas/delete/{{$class->id}}" data-confirm='Tem certeza que deseja excluir o item selecionado?' class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
             @endforeach
@@ -106,8 +107,8 @@
         $('#toast').fadeOut();
     });
 
-    setTimeout(function(){
-        $('#toast').fadeOut();
-    },3000)
+    // setTimeout(function(){
+    //     $('#toast').fadeOut();
+    // },3000)
 </script>
 @endsection

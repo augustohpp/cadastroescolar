@@ -8,40 +8,44 @@
             <form method="POST" action="{{ route('register') }}" id="formRegister">
                 @csrf
                 <div class="input">
-                    <div class="form-group col-6">
-                        <div class="input-group">
-                            <input id="name" type="text" class="form-control" name="name"
-                                value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
-                        </div>
-                    </div>
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                        value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
 
-                    <div class="form-group col-6">
-                        <div class="input-group">
-                            <input id="email" type="email" class="form-control"
-                                name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group col-6">
-                        <div class="input-group">
-                            <input type="string" name="cpf" id="cpf" class="form-control"
-                                placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
-                        </div>
-                    </div>
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        {{ $message }}
+                    </span>
+                    @enderror
 
-                    <div class="form-group col-6">
-                        <div class="input-group">
-                            <input id="password" type="password" class="form-control"
-                                name="password" required autocomplete="current-password" placeholder="Senha">
-                        </div>
-                    </div>
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                        name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
 
-                    <div class="form-group col-6">
-                        <div class="input-group">
-                            <input id="password-confirmation" type="password" class="form-control" name="password_confirmation"
-                                autocomplete="new-password" placeholder="Confirmar senha">
-                        </div>
-                    </div>
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        {{ $message }}
+                    </span>
+                    @enderror
+
+                    <input type="string" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror"
+                        placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
+
+                    @error('cpf')
+                    <span class="invalid-feedback" role="alert">
+                        {{ $message }}
+                    </span>
+                    @enderror
+
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="current-password" placeholder="Senha">
+
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        {{ $message }}
+                    </span>
+                    @enderror
+
+                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                        autocomplete="new-password" placeholder="Confirmar senha">
 
                     @if(Gate::allows('define-categ'))
                     <div class="form-group col-6">

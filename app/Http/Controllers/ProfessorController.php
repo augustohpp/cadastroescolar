@@ -41,6 +41,16 @@ class ProfessorController extends Controller
      */
     public function store(Request $request)
     {
+        $regras = [
+            'email' => 'unique:professores',
+        ];
+
+        $mensagens = [
+            'email.unique' => 'Email já está cadastrado',
+        ];
+
+        $request->validate($regras, $mensagens);
+
         $prof = new Professor();
         $prof->nome = $request->input('nome');
         $prof->sobrenome = $request->input('sobrenome');

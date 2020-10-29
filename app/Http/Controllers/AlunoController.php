@@ -44,6 +44,16 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
+        $regras = [
+            'email' => 'unique:alunos',
+        ];
+
+        $mensagens = [
+            'email.unique' => 'Email já está cadastrado',
+        ];
+
+        $request->validate($regras, $mensagens);
+        
         $aluno = new Aluno();
         $aluno->nome = $request->input('nome');
         $aluno->sobrenome = $request->input('sobrenome');
