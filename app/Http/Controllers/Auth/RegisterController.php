@@ -52,12 +52,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $messages = [
-            'unique' => 'Email fornecido já está cadastrado',
+            'email.unique' => 'Email fornecido já está cadastrado',
+            'cpf.unique' => 'CPF fornecido já está cadastrado',
             'confirmed' => 'senhas incompativeis',
         ];
 
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cpf' => ['required', 'unique:users']
         ],$messages);
     }
 

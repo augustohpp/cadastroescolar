@@ -8,44 +8,40 @@
             <form method="POST" action="{{ route('register') }}" id="formRegister">
                 @csrf
                 <div class="input">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                        value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
+                        </div>
+                    </div>
 
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
+                        </div>
+                    </div>
 
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input type="text" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror"
+                                placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
+                        </div>
+                    </div>
 
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                                name="password" required autocomplete="current-password" placeholder="Senha">
+                        </div>
+                    </div>
 
-                    <input type="string" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror"
-                        placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
-
-                    @error('cpf')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                        name="password" required autocomplete="current-password" placeholder="Senha">
-
-                    @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
-
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
-                        autocomplete="new-password" placeholder="Confirmar senha">
+                    <div class="form-group col-6">
+                        <div class="input-group">
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                                autocomplete="new-password" placeholder="Confirmar senha">
+                        </div>
+                    </div>
 
                     @if(Gate::allows('define-categ'))
                     <div class="form-group col-6">

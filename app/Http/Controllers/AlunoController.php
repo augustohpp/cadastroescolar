@@ -77,8 +77,7 @@ class AlunoController extends Controller
         $endereco->aluno_id = $idAluno;
         $endereco->save();
         
-        
-        return redirect()->route('listaAluno')->with('success','Aluno cadastrado com sucesso,');
+        return redirect()->route('listaAluno')->with('success','Aluno cadastrado com sucesso.');
     }
 
     /**
@@ -107,7 +106,6 @@ class AlunoController extends Controller
         if (isset($id)) {
             return view('viewsAlunos.editAlunos', compact('alunos','turmas'));
         }
-        return redirect(route('listaAluno'));
     }
 
     /**
@@ -119,6 +117,16 @@ class AlunoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $regras = [
+            'email' => 'required',
+        ];
+
+        $mensagens = [
+            'email.required' => 'Insira o email do aluno',
+        ];
+
+        $request->validate($regras, $mensagens);
+
         $aluno = Aluno::find($id);
         $aluno->update([
             'nome'=>$request->nome,
@@ -140,8 +148,7 @@ class AlunoController extends Controller
             'numero'=>$request->numero,
             'complemento'=>$request->complemento,
         ]);
-
-        return redirect(route('listaAluno'))->with('success','Aluno editado com sucesso.');
+        return redirect()->route('listaAluno')->with('success', 'Aluno cadastrado com sucesso.');
     }
 
     /**
@@ -158,7 +165,7 @@ class AlunoController extends Controller
             $del2->delete();
             $del->delete();
         }
-        return redirect(route('listaAluno'))->with('success','Aluno deletado com sucesso.');
+        return redirect()->route('listaAluno')->with('success','Aluno deletado com sucesso.');
     }
 
     public function pdf()

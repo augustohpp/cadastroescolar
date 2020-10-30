@@ -70,8 +70,8 @@
 
             <div class="col-6 border">
                 <h4 class="border-bottom font-weight-bold">Número</h4>
-                @if ($alunos->endereco->cep != null)
-                    <p>{{$alunos->endereco->cep}}</p>
+                @if ($alunos->endereco->numero != null)
+                    <p>{{$alunos->endereco->numero}}</p>
                 @else
                     <p>Sem número</p>
                 @endif

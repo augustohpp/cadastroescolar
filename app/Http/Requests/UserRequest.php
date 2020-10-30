@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required|unique:users,email',
-            'cpf' => 'required|min:14',
+            'cpf' => 'required|min:14|unique:users,cpf',
             'password' => 'required|min:8',
             'password_confirmation' => 'required',
             'categoria' => 'required',
