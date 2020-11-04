@@ -33,7 +33,7 @@
         <h4 style="margin-top: 50px"><strong></strong><br /></h4>
     </div>
     <table class="table">
-        <thead >
+        <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>

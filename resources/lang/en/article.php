@@ -73,15 +73,15 @@ return [
     'deleted' => [
         'metadata' => 'Na data :audit_created_at, :user_name [:audit_ip_address] deletou o registro via :audit_url',
         'modified' => [
-            'nome' => 'O nome foi deletado :old',
-            'sobrenome' => 'O sobrenome foi deletado',
-            'sexo' => 'O sexo foi deletado',
-            'data_Nascimento' => 'A data de nascimento foi deletado',
-            'tel' => 'O primeiro telefone foi deletado',
-            'tel2' => 'O segundo telefone foi deletado',
-            'email' => 'O email foi deletado',
-            'turma_id' => 'Turma_id foi deletado',
-            'id' => 'O ID foi deletado',
+            'nome' => 'O nome <strong>:old</strong> foi deletado',
+            'sobrenome' => 'O sobrenome <strong>:old</strong> foi deletado',
+            'sexo' => 'O sexo <strong>:old</strong> foi deletado',
+            'data_Nascimento' => 'A data de nascimento <strong>:old</strong> foi deletado',
+            'tel' => 'O telefone <strong>:old</strong> foi deletado',
+            'tel2' => 'O telefone <strong>:old</strong> foi deletado',
+            'email' => 'O email <strong>:old</strong> foi deletado',
+            'turma_id' => 'O id da turma <strong>:old</strong> foi deletado',
+            'id' => 'O ID <strong>:old</strong> foi deletado',
 
             //Auditoria Turmas
             'turma' => 'O nome da turma foi deletado',

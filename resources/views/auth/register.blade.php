@@ -1,37 +1,39 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @if (Gate::denies('create-users'))
 @section('content')
 <div class="container">
-    <div class="card">
-        <div class="card-header">{{ __('Criar Usuário') }}</div>
+    <div class="card" align="center">
+        <div class="card-header">
+            <h2>{{ __('Criar Usuário') }}</h2>
+        </div>
         <div class="form">
             <form method="POST" action="{{ route('register') }}" id="formRegister">
                 @csrf
                 <div class="input">
                     <div class="form-group col-6">
                         <div class="input-group">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                            <input id="name" type="text" class="form-control" name="name"
                                 value="{{ old('name') }}" autocomplete="name" autofocus placeholder="Nome">
                         </div>
                     </div>
 
                     <div class="form-group col-6">
                         <div class="input-group">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                            <input id="email" type="email" class="form-control"
                                 name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email">
                         </div>
                     </div>
 
                     <div class="form-group col-6">
                         <div class="input-group">
-                            <input type="text" name="cpf" id="cpf" class="form-control @error('cpf') is-invalid @enderror"
+                            <input type="text" name="cpf" id="cpf" class="form-control"
                                 placeholder="CPF" maxlength="14" data-mask="000.000.000-00">
                         </div>
                     </div>
 
                     <div class="form-group col-6">
                         <div class="input-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                            <input id="password" type="password" class="form-control"
                                 name="password" required autocomplete="current-password" placeholder="Senha">
                         </div>
                     </div>
@@ -62,12 +64,10 @@
                         </div>
                     @endif
 
-                    <button type="submit">
-                        {{ __('Registrar') }}
-                    </button>
-                </div>
-                <div class="details">
-                    <p class="register text-center"><a href="{{ route('listaUser') }}">Cancelar</a></p>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-1">Salvar</button>
+                        <a class="btn btn-secondary ml-1" href="{{ url()->previous() }}">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>
@@ -86,7 +86,7 @@
 @endsection
 @endif
 
-@section('javascript2')
+@section('javascript')
 
 <!-- Laravel Javascript Validation -->
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>

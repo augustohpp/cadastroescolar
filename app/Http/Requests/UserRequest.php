@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
             'email' => 'required|unique:users,email',
             'cpf' => 'required|min:14|unique:users,cpf',
             'password' => 'required|min:8',
-            'password_confirmation' => 'required',
+            'password_confirmation' => 'required|same:password',
             'categoria' => 'required',
         ];
     }
@@ -41,6 +41,7 @@ class UserRequest extends FormRequest
             'cpf.required' => 'Insira um cpf',
             'password.required' => 'Insira uma senha',
             'password_confirmation.required' => 'Confirme sua senha',
+            'password_confirmation.same' => 'As senhas devem ser iguais',
             'categoria.required' => 'Selecione a categoria do usuário',
         ];
     }

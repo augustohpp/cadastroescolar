@@ -54,12 +54,13 @@ class RegisterController extends Controller
         $messages = [
             'email.unique' => 'Email fornecido já está cadastrado',
             'cpf.unique' => 'CPF fornecido já está cadastrado',
-            'confirmed' => 'senhas incompativeis',
+            'password.confirmed' => 'senhas incompativeis',
         ];
 
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'cpf' => ['required', 'unique:users']
+            'cpf' => ['required', 'unique:users'],
+            'password' => ['required','min:8','confirmed'],
         ],$messages);
     }
 

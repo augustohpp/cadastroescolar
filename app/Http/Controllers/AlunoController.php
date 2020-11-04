@@ -165,7 +165,7 @@ class AlunoController extends Controller
             $del2->delete();
             $del->delete();
         }
-        return redirect()->route('listaAluno')->with('success','Aluno deletado com sucesso.');
+        return back()->with('success','Aluno deletado com sucesso.');
     }
 
     public function pdf()

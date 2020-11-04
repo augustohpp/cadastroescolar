@@ -56,14 +56,13 @@ Route::get('/turmas/info/{id}', 'TurmaController@show');
 Route::get('/turmas/delete/{id}', 'TurmaController@destroy');
 Route::get('/turmas/editar/{id}', 'TurmaController@edit');
 Route::post('/turmas/{id}', 'TurmaController@update');
-Route::get('/turmas/pdp', 'TurmaController@pdf')->name('pdfTurma');
+Route::get('/turmas/pdf', 'TurmaController@pdf')->name('pdfTurma');
 
+//---------------------------------------------------------------------------------------------------------------------------------------------
 
-Route::get('/teste', function(){
-    $audits = Audit::find(2);
-    return view('teste', compact('audits'));
-});
+// Routes do Usuário
 
+// Auth::routes();
 // Routes para Login
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -83,5 +82,15 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('/usuarios', 'UserController@show')->name('listaUser');
 Route::get('/home', 'UserController@index')->name('home');
 Route::get('/usuarios/delete/{id}', 'UserController@destroy');
-Route::get('/usuarios/auditoria/{id}', 'UserController@audit');
-// Auth::routes();
+
+//------------------------------------------------------------------------------------------------------------------------------
+
+//Routes para Auditoria 
+
+Route::get('/atividades', 'AuditController@audit')->name('atividades');
+Route::get('/atividades/{id}', 'AuditController@infoAudit');
+
+Route::get('/teste', function(){
+    $audit = Audit::find(14);
+    return view('teste', compact('audit'));
+});

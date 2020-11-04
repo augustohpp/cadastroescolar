@@ -1,16 +1,9 @@
-{{-- @foreach ($users as $tecTi)
-    @if ($tecTi->categoria == 3)
-        {{$tecTi->name}}
-        <hr>
-    @endif
-@endforeach --}}
-
 @extends('layouts.master')
 @section('title','EXEMPLO')
 @section('content')
 
-<div class="container-fluid no-padding table-responsive-sm">
-    
+<div class="container-fluid no-padding table-responsive-sm text-right">
+    <a class="btn btn-info" href="{{ route('atividades') }}">Ver Atividades</a>
 </div>
 
 <div class="accordion" id="accordionExample">

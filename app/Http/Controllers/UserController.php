@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use OwenIt\Auditing\Models\Audit;
 
 class UserController extends Controller
 {
@@ -74,11 +73,5 @@ class UserController extends Controller
         $delete = User::find($id);
         $delete->delete();
         return route('listaUser');
-    }
-
-    public function audit($id)
-    {
-        $audits = Audit::all()->where('user_id',$id);
-        return view('auth.audits', compact('audits'));
     }
 }
